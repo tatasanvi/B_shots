@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="assets/favicon.png">
+<meta name="description" content="Original Brave Shots - portrait, fashion, event and product photography by Precieux Tchibozo.">
+<meta property="og:title" content="Original Brave Shots">
+<meta property="og:description" content="Portrait and fashion photography by Precieux Tchibozo.">
+<meta property="og:image" content="assets/photos/p10.webp">
+<meta property="og:type" content="website">
+<title>Original Brave Shots — Précieux Tchibozo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Preload only what the hero paints: Bodoni Moda 400 (wordmark) and Archivo 400
+     (eyebrow/sub). Both families ship as variable fonts, so these two latin files
+     cover every weight the page uses. The URL already carries display=swap. -->
+<link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/bodonimoda/v28/aFTQ7PxzY382XsXX63LUYJSKSKjWXFBP.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/archivo/v25/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLydOxKsv4Rn.woff2">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;1,6..96,400&family=Archivo:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#14100E;
+  --ink-2:#1E1815;
+  --ink-3:#2A211C;
+  --bone:#EFE7DB;
+  --dim:#9E9184;
+  --brass:#C8973E;
+  --line:rgba(239,231,219,.14);
+  --display:"Bodoni Moda",Didot,"Bodoni MT",Georgia,serif;
+  --sans:"Archivo",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --pad:clamp(20px,5vw,72px);
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--ink);color:var(--bone);font-family:var(--sans);
+  font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+body.locked{overflow:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+
+/* ============ TYPE ============ */
+.eyebrow{
+  font-size:10px;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--dim);font-weight:500;
+}
+.display{font-family:var(--display);font-weight:400;line-height:.86;letter-spacing:-.01em}
+.sec-head{
+  display:flex;align-items:baseline;gap:18px;
+  padding-bottom:22px;margin-bottom:44px;border-bottom:1px solid var(--line);
+}
+.sec-head h2{font-family:var(--display);font-size:clamp(30px,4.4vw,56px);font-weight:400;line-height:1}
+.sec-head .num{font-size:10px;letter-spacing:.3em;color:var(--brass);font-weight:500}
+.wrap{max-width:1360px;margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+section{padding:clamp(72px,10vw,140px) 0}
+
+/* ============ OVERTURE ============ */
+#overture{
+  position:fixed;inset:0;z-index:200;display:flex;pointer-events:none;
+}
+#overture .leaf{
+  flex:1;background:var(--ink);
+  transition:transform 1.15s var(--ease);
+}
+#overture .leaf:nth-child(1){transition-delay:.62s}
+#overture .leaf:nth-child(2){transition-delay:.5s}
+#overture .leaf:nth-child(3){transition-delay:.74s}
+#overture .mark{
+  position:absolute;inset:0;display:grid;place-items:center;
+  transition:opacity .45s ease;
+}
+#overture .mark img{width:min(190px,42vw);opacity:.94}
+body.opened #overture .leaf:nth-child(1){transform:translateY(-101%)}
+body.opened #overture .leaf:nth-child(2){transform:translateY(101%)}
+body.opened #overture .leaf:nth-child(3){transform:translateY(-101%)}
+body.opened #overture .mark{opacity:0;transition-duration:.3s}
+body.done #overture{display:none}
+
+/* CSS-only fallback. The curtain is otherwise removed only when JS adds body.done,
+   so a JS failure leaves a black screen. These animations run to the same end state
+   as the .opened rules above, keeping the original stagger.
+   The selector is the guard: the moment JS adds .opened these rules stop matching,
+   so the animation cannot fire alongside the JS path — there is no double-animation
+   to suppress. If JS never arrives, the curtain lifts on its own at ~4s. */
+@keyframes overture-leaf-up{to{transform:translateY(-101%)}}
+@keyframes overture-leaf-down{to{transform:translateY(101%)}}
+@keyframes overture-mark-out{to{opacity:0}}
+body:not(.opened) #overture .leaf{animation:1.15s var(--ease) forwards}
+body:not(.opened) #overture .leaf:nth-child(1){animation-name:overture-leaf-up;animation-delay:4.62s}
+body:not(.opened) #overture .leaf:nth-child(2){animation-name:overture-leaf-down;animation-delay:4.5s}
+body:not(.opened) #overture .leaf:nth-child(3){animation-name:overture-leaf-up;animation-delay:4.74s}
+body:not(.opened) #overture .mark{animation:overture-mark-out .3s ease 4.4s forwards}
+
+/* ============ NAV ============ */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:120;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px var(--pad);
+  transition:background .4s ease,backdrop-filter .4s ease,padding .4s ease;
+}
+header.stuck{
+  background:rgba(20,16,14,.82);backdrop-filter:blur(14px);
+  padding-top:12px;padding-bottom:12px;
+  border-bottom:1px solid var(--line);
+}
+header .brand{display:flex;align-items:center;gap:11px}
+header .brand img{width:34px}
+header .brand span{
+  font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--dim);
+}
+.nav-right{display:flex;align-items:center;gap:26px}
+.lang{display:flex;gap:7px;font-size:10px;letter-spacing:.16em;color:var(--dim)}
+.lang b{color:var(--bone);font-weight:500}
+.menu-btn{
+  display:flex;align-items:center;gap:11px;
+  font-size:10px;letter-spacing:.28em;text-transform:uppercase;
+}
+.menu-btn .bars{display:grid;gap:4px;width:20px}
+.menu-btn .bars i{height:1px;background:var(--bone);display:block;transition:transform .4s var(--ease)}
+body.nav-open .menu-btn .bars i:nth-child(1){transform:translateY(2.5px) rotate(13deg)}
+body.nav-open .menu-btn .bars i:nth-child(2){transform:translateY(-2.5px) rotate(-13deg)}
+
+#overlay{
+  position:fixed;inset:0;z-index:110;background:var(--ink-2);
+  clip-path:inset(0 0 100% 0);transition:clip-path .8s var(--ease);
+  display:flex;align-items:center;
+}
+body.nav-open #overlay{clip-path:inset(0 0 0 0)}
+#overlay ol{list-style:none;padding:0 var(--pad);width:100%}
+#overlay li{overflow:hidden}
+#overlay a{
+  display:block;font-family:var(--display);
+  font-size:clamp(34px,7vw,86px);line-height:1.12;padding:5px 0;
+  transform:translateY(105%);transition:transform .7s var(--ease),color .3s ease;
+}
+body.nav-open #overlay a{transform:translateY(0)}
+#overlay li:nth-child(1) a{transition-delay:.14s}
+#overlay li:nth-child(2) a{transition-delay:.20s}
+#overlay li:nth-child(3) a{transition-delay:.26s}
+#overlay li:nth-child(4) a{transition-delay:.32s}
+#overlay li:nth-child(5) a{transition-delay:.38s}
+#overlay li:nth-child(6) a{transition-delay:.44s}
+#overlay a:hover{color:var(--brass)}
+#overlay a em{
+  font-family:var(--sans);font-style:normal;font-size:10px;
+  letter-spacing:.28em;color:var(--brass);vertical-align:super;margin-right:14px;
+}
+
+/* ============ HERO ============ */
+#hero{
+  position:relative;width:100%;height:100svh;min-height:640px;
+  overflow:hidden;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;
+  padding:0 var(--pad);
+}
+.hero-inner{
+  position:relative;z-index:10;display:flex;flex-direction:column;
+  align-items:center;margin-top:-9vh;max-width:900px;
+}
+.pill{
+  display:inline-block;border:1px solid var(--line);border-radius:100px;
+  background:rgba(30,24,21,.5);backdrop-filter:blur(8px);
+  padding:8px 18px;font-size:10px;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--dim);margin-bottom:26px;
+}
+#hero h1{
+  font-family:var(--display);font-weight:400;
+  font-size:clamp(46px,8.5vw,104px);line-height:.98;letter-spacing:-.01em;
+}
+#hero h1 .w{display:inline-block}
+#hero h1 .brass{color:var(--brass)}
+.desc{
+  margin-top:26px;max-width:44ch;font-size:15.5px;line-height:1.75;
+  color:var(--dim);
+}
+.cta{
+  margin-top:32px;padding:14px 34px;border-radius:100px;
+  background:var(--brass);color:#1A1206;font-weight:500;
+  font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+  transition:transform .3s var(--ease),background .3s ease;
+}
+.cta:hover{transform:scale(1.045);background:#D9A94E}
+.cta:active{transform:scale(.97)}
+
+/* Hidden state is opt-in, gated on html.js-anim exactly like .rv/.clip. If JS never
+   runs, the hero copy is visible rather than stranded at opacity:0. The translateY
+   values ride the same gate so nothing shifts when JS is on. .cta takes opacity only —
+   it has no entrance offset, and a translate here would fight its hover scale. */
+.js-anim .pill,
+.js-anim .desc,
+.js-anim .cta,
+.js-anim #hero h1 .w{opacity:0}
+.js-anim .pill,.js-anim .desc{transform:translateY(10px)}
+.js-anim #hero h1 .w{transform:translateY(14px)}
+
+/* entrance animations fire only after the overture lifts */
+body.done .pill{animation:fadeUp .8s var(--ease) .1s forwards}
+body.done #hero h1 .w:nth-child(1){animation:fadeUp .9s var(--ease) .22s forwards}
+body.done #hero h1 .w:nth-child(3){animation:fadeUp .9s var(--ease) .34s forwards}
+body.done .desc{animation:fadeUp .8s var(--ease) .55s forwards}
+/* The CTA fades without a transform. fadeUp ends on transform:none with fill:forwards,
+   and a finished forwards animation outranks the :hover/:active rules below — which
+   silently killed the button's scale. */
+body.done .cta{animation:fadeIn .8s var(--ease) .68s forwards}
+@keyframes fadeUp{to{opacity:1;transform:none}}
+@keyframes fadeIn{to{opacity:1}}
+
+.marquee{
+  position:absolute;bottom:0;left:0;width:100%;height:38%;z-index:5;
+  -webkit-mask-image:linear-gradient(to bottom,transparent,#000 20%,#000 78%,transparent);
+  mask-image:linear-gradient(to bottom,transparent,#000 20%,#000 78%,transparent);
+}
+.track{
+  display:flex;gap:18px;align-items:center;height:100%;
+  width:max-content;padding-left:18px;
+  animation:slide 52s linear infinite;
+}
+.marquee:hover .track{animation-play-state:paused}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.frame{
+  position:relative;flex-shrink:0;height:70%;aspect-ratio:3/4;
+  border-radius:3px;overflow:hidden;
+  box-shadow:0 18px 40px rgba(0,0,0,.55);
+}
+.frame:nth-child(odd){transform:rotate(-1.6deg)}
+.frame:nth-child(even){transform:rotate(2.4deg)}
+.frame img{width:100%;height:100%;object-fit:cover}
+
+#hero::after{
+  content:"";position:absolute;inset:0;z-index:6;pointer-events:none;
+  background:linear-gradient(to bottom,
+    rgba(20,16,14,.4) 0%,rgba(20,16,14,.72) 45%,rgba(20,16,14,.35) 100%);
+}
+.scroll-hint{
+  position:absolute;bottom:26px;right:var(--pad);z-index:3;
+  font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--dim);
+  display:flex;align-items:center;gap:10px;
+  opacity:0;transition:opacity .8s ease 2.4s;
+}
+body.done .scroll-hint{opacity:1}
+.scroll-hint .rule{width:52px;height:1px;background:var(--brass);transform-origin:left;animation:pull 2.4s var(--ease) infinite}
+@keyframes pull{0%{transform:scaleX(0)}55%{transform:scaleX(1)}100%{transform:scaleX(0);transform-origin:right}}
+
+/* ============ REVEAL ============ */
+/* Base state is VISIBLE. If JS never runs, or fails before it can flag itself,
+   nothing is ever hidden — the photographs are not gated behind a script. */
+.rv{opacity:1;transform:none;transition:opacity .9s ease,transform .9s var(--ease)}
+.clip{clip-path:inset(0 0 0 0);transition:clip-path 1.15s var(--ease)}
+/* Hiding is opt-in, gated on html.js-anim (added by an inline script in <head>). */
+.js-anim .rv:not(.in){opacity:0;transform:translateY(30px)}
+.js-anim .clip:not(.in){clip-path:inset(100% 0 0 0)}
+.rv.in{opacity:1;transform:none}
+.clip.in{clip-path:inset(0 0 0 0)}
+
+/* ============ STATEMENT ============ */
+#statement{border-top:1px solid var(--line)}
+.stmt-grid{display:grid;grid-template-columns:1fr 1.55fr;gap:clamp(30px,7vw,110px);align-items:start}
+.stmt-grid p.lead{
+  font-family:var(--display);font-size:clamp(21px,2.9vw,38px);
+  line-height:1.32;font-weight:400;
+}
+.stmt-grid p.lead b{color:var(--brass);font-weight:400;font-style:italic}
+.stmt-body p{color:var(--dim);font-size:15px;line-height:1.85;margin-top:20px;max-width:52ch}
+
+/* ============ WORK ============ */
+/* ---- photo sphere ---- */
+#sphere{
+  position:relative;
+  /* Must contain the orbit, or orbs spill over the heading above and the caption below.
+     Worst case from centre = radius 300 + half an orb at hover scale (42*1.35) + drift 11
+     = 368, so the box needs ~736px. At 70vh alone a 800px-tall screen gave 560px and
+     orbs overflowed by ~70px at both ends. */
+  height:clamp(750px,70vh,820px);
+  perspective:1400px;
+  cursor:grab;
+  /* pan-y lets a vertical swipe scroll the page; horizontal drags spin the sphere */
+  touch-action:pan-y;
+}
+#sphere.dragging{cursor:grabbing}
+#sphere-inner{position:absolute;inset:0;transform-style:preserve-3d}
+/* Centred with margins, not translate(-50%,-50%): a percentage translate would be
+   expressed in the parent's rotated basis and swing the photo around as it spins.
+   Margins offset the box before any transform, so transform-origin is the true centre. */
+.orb{
+  position:absolute;left:50%;top:50%;width:84px;margin:-42px 0 0 -42px;
+  cursor:pointer;-webkit-tap-highlight-color:transparent;
+  /* The wrapper is the element that carries the transform and gets promoted to its own
+     compositing layer during a drag. Chrome can drop a child's border-radius clip on a
+     promoted layer, which rendered orbs as squares mid-drag — so the clip lives here,
+     on the transformed element itself. The shadow moves here too: overflow:hidden would
+     clip a shadow painted by the child, but never the clipping element's own. */
+  border-radius:50%;overflow:hidden;
+  box-shadow:0 10px 24px rgba(0,0,0,.45);
+  isolation:isolate;
+}
+.orb img{
+  display:block;width:100%;aspect-ratio:1/1;object-fit:cover;
+  /* A square centre-crop of a 3:4 portrait discards 25% of the height. Biasing to 12%
+     takes only 3% off the top, which keeps crowns and headpieces in frame. */
+  object-position:center 12%;
+  border-radius:50%;
+  /* Belt and braces: a mask survives layer promotion where a border-radius clip may not. */
+  -webkit-mask-image:radial-gradient(circle, #000 99%, transparent 100%);
+  mask-image:radial-gradient(circle, #000 99%, transparent 100%);
+  transition:filter .3s ease;
+}
+.orb:focus-visible{outline:2px solid var(--brass);outline-offset:4px}
+@media(hover:hover){
+  .orb:hover img{filter:brightness(1.28)}
+}
+.sphere-cap{
+  display:flex;justify-content:center;gap:14px;margin-top:20px;min-height:1.3em;
+  font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+}
+.sphere-cap b{color:var(--dim);font-weight:400}
+.sphere-cap s{text-decoration:none;color:var(--brass);opacity:.75}
+
+/* ============ CLIENTS ============ */
+#clients{background:var(--ink-2)}
+.client{
+  display:grid;grid-template-columns:88px 1fr auto;gap:clamp(16px,4vw,50px);
+  align-items:center;padding:26px 0;border-bottom:1px solid var(--line);
+  transition:padding-left .5s var(--ease);
+}
+.client:first-of-type{border-top:1px solid var(--line)}
+.client.live{cursor:pointer}
+.client.live:hover{padding-left:18px}
+.client .yr{font-size:10px;letter-spacing:.24em;color:var(--brass)}
+.client h3{
+  font-family:var(--display);font-size:clamp(22px,3.4vw,44px);font-weight:400;
+  transition:color .4s ease;
+}
+.client.live:hover h3{color:var(--brass)}
+.client .tag{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);white-space:nowrap}
+.client.soon h3{color:var(--dim)}
+
+/* ============ PRINT ============ */
+#print .print-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:clamp(24px,5vw,64px);align-items:center}
+#print .note{font-size:15px;line-height:1.85;color:var(--dim);max-width:40ch}
+#print .note b{color:var(--bone);font-weight:400;display:block;font-family:var(--display);font-size:26px;margin-bottom:16px}
+
+/* ============ STUDIO ============ */
+#studio{border-top:1px solid var(--line)}
+.studio-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(30px,6vw,90px);align-items:start}
+.portrait-frame{position:relative}
+.portrait-frame img{width:100%;filter:grayscale(1) contrast(1.06)}
+.portrait-frame .cap{
+  margin-top:12px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);
+}
+.studio-grid h3{
+  font-family:var(--display);font-size:clamp(26px,3.6vw,46px);font-weight:400;line-height:1.15;
+}
+.studio-grid .bio{color:var(--dim);font-size:15px;line-height:1.85;margin-top:22px;max-width:56ch}
+.cols{display:grid;grid-template-columns:repeat(2,1fr);gap:34px;margin-top:46px}
+.cols h4{
+  font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--brass);
+  padding-bottom:12px;border-bottom:1px solid var(--line);margin-bottom:14px;
+}
+.cols li{list-style:none;font-size:14px;color:var(--dim);padding:5px 0}
+
+/* ============ SERVICES ============ */
+#services{background:var(--ink-2)}
+.svc{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line)}
+.svc>div{background:var(--ink-2);padding:30px 24px;transition:background .45s ease}
+.svc>div:hover{background:var(--ink-3)}
+.svc .n{font-size:10px;letter-spacing:.24em;color:var(--brass)}
+.svc h4{font-family:var(--display);font-size:24px;font-weight:400;margin:16px 0 10px}
+.svc p{font-size:13.5px;line-height:1.75;color:var(--dim)}
+
+/* ============ CONTACT ============ */
+#contact{text-align:left}
+.contact-lead{
+  font-family:var(--display);font-size:clamp(34px,6.4vw,92px);line-height:1.02;font-weight:400;
+}
+.contact-lead a{
+  border-bottom:1px solid var(--line);transition:border-color .4s ease,color .4s ease;
+  font-style:italic;color:var(--brass);
+}
+.contact-lead a:hover{border-color:var(--brass)}
+.contact-rows{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:34px;
+  margin-top:64px;padding-top:30px;border-top:1px solid var(--line);
+}
+.contact-rows h5{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--dim);margin-bottom:12px}
+.contact-rows a,.contact-rows p{font-size:15px;line-height:1.7;transition:color .3s ease}
+.contact-rows a:hover{color:var(--brass)}
+footer{
+  padding:28px var(--pad);border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+  font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);
+}
+
+/* ============ LIGHTBOX ============ */
+#lb{
+  position:fixed;inset:0;z-index:180;background:rgba(15,12,10,.97);
+  display:none;place-items:center;padding:clamp(16px,4vw,60px);
+}
+#lb.on{display:grid}
+.lb-card{
+  position:relative;overflow:hidden;
+  /* 560px wide unless the viewport is too short for it: a 3:4 photo at 560 is 747px
+     tall, which alone overflows an 800px-high screen and cuts off the title and tag.
+     Deriving width from the free height keeps the whole card visible. */
+  width:min(100%, 560px, (82vh - 120px) * 0.75);
+  background:var(--ink-2);border-radius:6px;
+  box-shadow:0 30px 80px rgba(0,0,0,.6);
+  opacity:0;transform:scale(.96);
+  transition:opacity .42s var(--ease),transform .42s var(--ease);
+}
+#lb.ready .lb-card{opacity:1;transform:none}
+/* The full frame, square-cornered — the circle belongs to the orbs only. */
+#lb img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover}
+.lb-text{padding:26px 28px 30px}
+.lb-text h3{
+  font-family:var(--display);font-size:26px;font-weight:400;
+  color:var(--bone);line-height:1.15;
+}
+.lb-text .tag{
+  margin-top:10px;font-size:10px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--brass);
+}
+#lb .x{
+  position:absolute;top:14px;right:14px;z-index:3;
+  width:36px;height:36px;border-radius:50%;
+  background:rgba(20,16,14,.72);border:1px solid rgba(239,231,219,.2);
+  color:var(--bone);font-size:14px;line-height:1;
+  display:grid;place-items:center;
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  transition:background .3s ease;
+}
+#lb .x:hover{background:rgba(20,16,14,.92)}
+#lb .nav{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:46px;height:46px;border:1px solid var(--line);border-radius:50%;
+  display:grid;place-items:center;transition:all .35s ease;
+}
+#lb .nav:hover{background:var(--bone);color:var(--ink);border-color:var(--bone)}
+#lb .prev{left:16px}
+#lb .next{right:16px}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:1020px){
+  .stmt-grid,.studio-grid,#print .print-grid{grid-template-columns:1fr}
+  .svc{grid-template-columns:repeat(2,1fr)}
+  .contact-rows{grid-template-columns:1fr 1fr}
+}
+@media(max-width:680px){
+  /* Copy sits lower on mobile: the marquee is anchored to the bottom, so a large
+     negative margin here opened a dead gap between the CTA and the frames. */
+  .hero-inner{margin-top:-3vh}
+  .orb{width:76px;margin:-38px 0 0 -38px}
+  /* Mobile orbit: 150 + 38*1.35 + 11 = 212 from centre, so the box needs ~424px. */
+  #sphere{height:clamp(470px,56vh,560px)}
+  .marquee{height:38%}
+  .frame{height:62%}
+  .desc{font-size:14.5px}
+  /* 44px minimum tap targets */
+  .svc{grid-template-columns:1fr}
+  .cols{grid-template-columns:1fr}
+  .contact-rows{grid-template-columns:1fr}
+  .client{grid-template-columns:64px 1fr;row-gap:6px}
+  .client .tag{grid-column:2}
+  #lb .nav{width:38px;height:38px}
+  #lb .prev{left:6px}#lb .next{right:6px}
+}
+/* Short viewports: lift the copy and shrink the band so the CTA clears the frames. */
+/* Short viewports, but not phones: this lifts the copy so the CTA clears the marquee
+   frames on a laptop. The range runs to 1000px because heights between 820 and 1000
+   were otherwise uncovered and overlapped by up to 23px. It sits after the 680px block,
+   so without the min-width guard it would override the mobile hero spacing on phones. */
+@media(min-width:681px) and (max-height:1000px){
+  .hero-inner{margin-top:-13vh}
+  .marquee{height:34%}
+}
+@media(prefers-reduced-motion:reduce){
+  *{transition-duration:.01ms!important;animation-duration:.01ms!important}
+  .rv,.clip{opacity:1!important;transform:none!important;clip-path:none!important}
+  /* The rule above zeroes duration but not delay; without this the no-JS fallback
+     would still sit on a black screen for ~4.6s before snapping open. */
+  #overture .leaf,#overture .mark{animation-delay:0s!important}
+  .track{animation:none!important}
+  .pill,.desc,.cta,#hero h1 .w{opacity:1!important;transform:none!important}
+}
+</style>
+<script>
+/* Opt in to reveal animations only once we know JS is alive. This runs in <head>,
+   before first paint, so there is no flash of hidden-then-shown content. If it
+   never executes, the base CSS above leaves every element visible. */
+document.documentElement.classList.add('js-anim');
+</script>
+</head>
+<body>
+
+<div id="overture">
+  <div class="leaf"></div><div class="leaf"></div><div class="leaf"></div>
+  <div class="mark"><img src="assets/logo.png" alt="OB Shots"></div>
+</div>
+
+<header id="hd">
+  <a class="brand" href="#top">
+    <img src="assets/logo.png" alt="">
+    <span>Original&nbsp;Brave</span>
+  </a>
+  <div class="nav-right">
+    <div class="lang"><b>EN</b><span>/</span><span>FR</span></div>
+    <button class="menu-btn" id="mb"><span id="mbt">Menu</span><span class="bars"><i></i><i></i></span></button>
+  </div>
+</header>
+
+<nav id="overlay">
+  <ol>
+    <li><a href="#work"><em>01</em>Work</a></li>
+    <li><a href="#clients"><em>02</em>Clients</a></li>
+    <li><a href="#print"><em>03</em>In Print</a></li>
+    <li><a href="#studio"><em>04</em>Studio</a></li>
+    <li><a href="#services"><em>05</em>Services</a></li>
+    <li><a href="#contact"><em>06</em>Contact</a></li>
+  </ol>
+</nav>
+
+<main id="top">
+
+<section id="hero">
+  <div class="hero-inner">
+    <div class="pill">Portrait &amp; Fashion Photography</div>
+    <h1>
+      <span class="w">Original</span><br>
+      <span class="w brass">Brave</span>
+    </h1>
+    <p class="desc">Portrait, fashion, event and product photography by
+    Précieux Tchibozo. Lit, styled and directed — studio and location.</p>
+    <a class="cta" href="#contact">Book a shoot</a>
+  </div>
+  <div class="marquee"><div class="track" id="track"></div></div>
+  <div class="scroll-hint"><span class="rule"></span>Scroll</div>
+</section>
+
+<section id="statement">
+  <div class="wrap">
+    <div class="stmt-grid">
+      <p class="lead rv">I photograph people and products as if they <b>already belonged on a cover.</b></p>
+      <div class="stmt-body rv">
+        <p>Original Brave Shots is a portrait and fashion studio working across studio and location. Every frame is lit, styled and directed — not caught. The work runs from editorial portraiture and campaign imagery to event coverage and product photography for brands.</p>
+        <p>Art direction, shooting and retouching are handled in-house, which means the image you approve is the image that ships.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="num">01</span><h2>My Work</h2></div>
+    <div id="sphere"><div id="sphere-inner"></div></div>
+    <div class="sphere-cap" id="spherecap"></div>
+  </div>
+</section>
+
+<section id="clients">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="num">02</span><h2>Clients &amp; Campaigns</h2></div>
+    <div id="clientlist"></div>
+  </div>
+</section>
+
+<section id="print">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="num">03</span><h2>In Print</h2></div>
+    <div class="print-grid">
+      <div class="clip"><img id="printimg" alt="Editorial spread"></div>
+      <div class="note rv">
+        <b>Shot for the page, not the feed.</b>
+        Work produced for print carries different demands — resolution, colour accuracy, and compositions that survive a fold. Editorial spreads and campaign imagery are delivered print-ready.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="studio">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="num">04</span><h2>The Studio</h2></div>
+    <div class="studio-grid">
+      <div class="portrait-frame clip">
+        <img id="portrait" alt="Portrait">
+        <div class="cap">Précieux Tchibozo — Founder</div>
+      </div>
+      <div class="rv">
+        <h3>Self-taught, then sharpened in the field.</h3>
+        <p class="bio">Précieux Tchibozo works as a portrait and fashion photographer, covering events, studio and location sessions, and product photography. His training came first from teaching himself, then from workshops, practical courses and a long run of work on real productions.</p>
+        <p class="bio">Art direction, retouching and graphic design sit alongside the camera work — a single pair of hands from the brief through to the delivered file.</p>
+        <div class="cols">
+          <div>
+            <h4>Disciplines</h4>
+            <ul>
+              <li>Portrait photography</li>
+              <li>Fashion photography</li>
+              <li>Event photography</li>
+              <li>Product photography</li>
+              <li>Art direction</li>
+              <li>Retouching</li>
+              <li>Graphic design</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Tools</h4>
+            <ul>
+              <li>Adobe Lightroom</li>
+              <li>Adobe Photoshop</li>
+              <li>Capture One</li>
+              <li>Evoto</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="num">05</span><h2>How a Shoot Runs</h2></div>
+    <div class="svc rv">
+      <div><div class="n">01</div><h4>The brief</h4><p>You send the idea, the deadline and any references. I come back with what's possible and what it costs.</p></div>
+      <div><div class="n">02</div><h4>Direction</h4><p>Concept, styling, location and lighting are planned before anyone stands in front of a camera.</p></div>
+      <div><div class="n">03</div><h4>The shoot</h4><p>Studio or location. You see frames as we go, so nothing is a surprise at delivery.</p></div>
+      <div><div class="n">04</div><h4>Delivery</h4><p>A selected edit, retouched and colour-graded, delivered in web and print resolution.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="num">06</span><h2>Contact</h2></div>
+    <p class="contact-lead rv">Have something to shoot?<br><a href="mailto:originalbraveshots@gmail.com">Write to the studio.</a></p>
+    <div class="contact-rows rv">
+      <div>
+        <h5>Email</h5>
+        <a href="mailto:originalbraveshots@gmail.com">originalbraveshots@gmail.com</a>
+      </div>
+      <div>
+        <h5>Instagram</h5>
+        <a href="https://www.instagram.com/original_brave_shots" target="_blank" rel="noopener">@original_brave_shots</a>
+      </div>
+      <div>
+        <h5>Facebook</h5>
+        <a href="https://www.facebook.com/profile.php?id=100088776982546" target="_blank" rel="noopener">Original Brave Shots</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <span>Original Brave Shots © 2026</span>
+  <span>Précieux Tchibozo — Portrait &amp; Fashion</span>
+</footer>
+
+<div id="lb">
+  <button class="nav prev" id="lbp" aria-label="Previous">‹</button>
+  <div class="lb-card">
+    <button class="x" id="lbx" aria-label="Close">&#10005;</button>
+    <img id="lbi" alt="">
+    <div class="lb-text">
+      <h3 id="lbm"></h3>
+      <div class="tag" id="lbt"></div>
+    </div>
+  </div>
+  <button class="nav next" id="lbn" aria-label="Next">›</button>
+</div>
+
+<script>const PHOTOS = [
+{
+"id": "p01",
+"cat": "archive",
+"label": "Reading Room",
+"tag": "Editorial",
+"src": "assets/photos/p01.webp",
+"w": 973,
+"h": 1280
+},
+{
+"id": "p02",
+"cat": "print",
+"label": "Editorial Spread",
+"tag": "Print",
+"src": "assets/photos/p02.webp",
+"w": 875,
+"h": 525
+},
+{
+"id": "p03",
+"cat": "events",
+"label": "Twenty-One",
+"tag": "Event",
+"src": "assets/photos/p03.webp",
+"w": 744,
+"h": 1080
+},
+{
+"id": "p04",
+"cat": "brands",
+"label": "Sco Chips",
+"tag": "Product",
+"src": "assets/photos/p04.webp",
+"w": 973,
+"h": 1280
+},
+{
+"id": "p05",
+"cat": "archive",
+"label": "Cahiers",
+"tag": "Editorial",
+"src": "assets/photos/p05.webp",
+"w": 973,
+"h": 1280
+},
+{
+"id": "p06",
+"cat": "portrait",
+"label": "Halo",
+"tag": "Studio",
+"src": "assets/photos/p06.webp",
+"w": 853,
+"h": 1280
+},
+{
+"id": "p07",
+"cat": "fashion",
+"label": "Red at the Market",
+"tag": "Location",
+"src": "assets/photos/p07.webp",
+"w": 853,
+"h": 1280
+},
+{
+"id": "p08",
+"cat": "archive",
+"label": "Gold Hand",
+"tag": "Location",
+"src": "assets/photos/p08.webp",
+"w": 720,
+"h": 1080
+},
+{
+"id": "p09",
+"cat": "archive",
+"label": "Bloom",
+"tag": "Location",
+"src": "assets/photos/p09.webp",
+"w": 853,
+"h": 1280
+},
+{
+"id": "p10",
+"cat": "portrait",
+"label": "Purple Scarf",
+"tag": "Studio",
+"src": "assets/photos/p10.webp",
+"w": 853,
+"h": 1280
+},
+{
+"id": "p11",
+"cat": "archive",
+"label": "Service",
+"tag": "Event",
+"src": "assets/photos/p11.webp",
+"w": 973,
+"h": 1280
+},
+{
+"id": "p12",
+"cat": "events",
+"label": "The Party",
+"tag": "Event",
+"src": "assets/photos/p12.webp",
+"w": 973,
+"h": 1280
+},
+{
+"id": "p13",
+"cat": "fashion",
+"label": "Colours",
+"tag": "Location",
+"src": "assets/photos/p13.webp",
+"w": 750,
+"h": 1125
+},
+{
+"id": "p14",
+"cat": "archive",
+"label": "December",
+"tag": "Studio",
+"src": "assets/photos/p14.webp",
+"w": 720,
+"h": 1080
+},
+{
+"id": "p15",
+"cat": "fashion",
+"label": "Headlights I",
+"tag": "Location",
+"src": "assets/photos/p15.webp",
+"w": 720,
+"h": 1080
+},
+{
+"id": "p16",
+"cat": "archive",
+"label": "Headlights II",
+"tag": "Location",
+"src": "assets/photos/p16.webp",
+"w": 720,
+"h": 1080
+},
+{
+"id": "p17",
+"cat": "archive",
+"label": "Silk & Crown",
+"tag": "Studio",
+"src": "assets/photos/p17.webp",
+"w": 720,
+"h": 1080
+},
+{
+"id": "p18",
+"cat": "events",
+"label": "The Table",
+"tag": "Event",
+"src": "assets/photos/p18.webp",
+"w": 973,
+"h": 1280
+},
+{
+"id": "p19",
+"cat": "fashion",
+"label": "Wax at the Stall",
+"tag": "Location",
+"src": "assets/photos/p19.webp",
+"w": 853,
+"h": 1280
+},
+{
+"id": "p20",
+"cat": "archive",
+"label": "Red Parasol",
+"tag": "Location",
+"src": "assets/photos/p20.webp",
+"w": 720,
+"h": 1080
+},
+{
+"id": "p21",
+"cat": "fashion",
+"label": "Collar & Tie",
+"tag": "Studio",
+"src": "assets/photos/p21.webp",
+"w": 753,
+"h": 1080
+},
+{
+"id": "p22",
+"cat": "portrait",
+"label": "White Orchid",
+"tag": "Studio",
+"src": "assets/photos/p22.webp",
+"w": 720,
+"h": 1080
+},
+{
+"id": "p23",
+"cat": "fashion",
+"label": "Blue Parasol",
+"tag": "Location",
+"src": "assets/photos/p23.webp",
+"w": 853,
+"h": 1280
+},
+{
+"id": "p24",
+"cat": "portrait",
+"label": "Fur Collar",
+"tag": "Studio",
+"src": "assets/photos/p24.webp",
+"w": 720,
+"h": 1080
+}
+];</script>
+<script>
+(function(){
+  var RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- overture ---------- */
+  function open(){
+    document.body.classList.add('opened');
+    setTimeout(function(){ document.body.classList.add('done'); }, RM?60:1900);
+  }
+  if(RM){ document.body.classList.add('opened','done'); }
+  else { window.addEventListener('load', function(){ setTimeout(open, 620); }); }
+
+  /* ---------- hero marquee ---------- */
+  var MARQUEE = ['p10','p07','p24','p23','p15','p19','p08','p21','p06','p22','p17','p13'];
+  var byId = {}; PHOTOS.forEach(function(p){ byId[p.id]=p; });
+
+  /* Responsive variants are derived from the existing src, so the PHOTOS array is
+     untouched. The large descriptor uses p.w — the files are 720-973px wide, not a
+     uniform 1000px, and a wrong w descriptor makes the browser pick the wrong file. */
+  function smallOf(src){ return src.replace(/\.webp$/, '-sm.webp'); }
+  function srcsetOf(p){ return smallOf(p.src) + ' 500w, ' + p.src + ' ' + p.w + 'w'; }
+
+  function buildMarquee(){
+    var track = document.getElementById('track');
+    if(!track) return;
+    /* The 12 ids are duplicated to 24 so translateX(-50%) lands the copy exactly
+       where the original was. Every frame carries the same gap, and no margin is
+       added anywhere, so the seam is invisible. */
+    MARQUEE.concat(MARQUEE).forEach(function(id){
+      var p = byId[id];
+      if(!p) return;
+      var d = document.createElement('div');
+      d.className = 'frame';
+      var im = new Image();
+      /* sizes before srcset before src, so selection happens with full information.
+         Frames measure 180px wide on desktop and 126px on mobile, so 180px declares
+         the slot honestly: DPR 2 needs 360px and the 500w -sm variant wins. */
+      im.sizes = '180px';
+      im.srcset = srcsetOf(p);
+      im.src = p.src;
+      im.alt = '';
+      d.appendChild(im);
+      track.appendChild(d);
+    });
+  }
+  /* Built immediately rather than on body.done: the marquee has no dependency on the
+     overture, and building early lets the frames load behind the curtain instead of
+     popping in after it lifts. */
+  buildMarquee();
+
+  /* ---------- header + menu ---------- */
+  var hd = document.getElementById('hd');
+  window.addEventListener('scroll', function(){
+    hd.classList.toggle('stuck', window.scrollY > 60);
+  }, {passive:true});
+
+  var mb = document.getElementById('mb'), mbt = document.getElementById('mbt');
+  mb.addEventListener('click', function(){
+    var open = document.body.classList.toggle('nav-open');
+    document.body.classList.toggle('locked', open);
+    mbt.textContent = open ? 'Close' : 'Menu';
+  });
+  document.querySelectorAll('#overlay a').forEach(function(a){
+    a.addEventListener('click', function(){
+      document.body.classList.remove('nav-open','locked');
+      mbt.textContent='Menu';
+    });
+  });
+
+  /* ---------- reveals ---------- */
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ reveal(e.target); } });
+  }, {threshold:.12, rootMargin:'0px 0px -6% 0px'});
+
+  function reveal(el){ el.classList.add('in'); io.unobserve(el); }
+  function pending(){ return document.querySelectorAll('.rv:not(.in),.clip:not(.in)'); }
+
+  function observe(){
+    pending().forEach(function(el){
+      io.observe(el);
+      /* Anything already within the viewport at attach time reveals straight away,
+         rather than waiting on the observer's first callback. */
+      if(el.getBoundingClientRect().top < window.innerHeight) reveal(el);
+    });
+    /* Hard safety net. Whatever the observer does or fails to do — suspended in a
+       background tab, never firing, unsupported — content is never left hidden. */
+    setTimeout(function(){ pending().forEach(reveal); }, 2500);
+  }
+
+  /* ---------- work sphere ---------- */
+  var sphere = document.getElementById('sphere');
+  var sphereInner = document.getElementById('sphere-inner');
+  var sphereCap = document.getElementById('spherecap');
+  var visible = [], orbs = [];
+
+  var rotY = 0, rotX = 0;      /* current sphere rotation, degrees */
+  var velY = 0, velX = 0;      /* momentum, degrees per frame */
+  var dragging = false, moved = false, pid = null;
+  var AUTO = 0.12;             /* auto-rotate, degrees per frame */
+  var DRIFT_XY = 11, DRIFT_Z = 8;   /* per-orb drift amplitude, px */
+  var driftT = 0;              /* running timestamp, advances even while dragging */
+
+  function isMobile(){ return window.matchMedia('(max-width:680px)').matches; }
+  function radiusOf(){ return isMobile() ? 150 : 300; }
+  /* Depth cues are tuned for the dense desktop sphere; the same ranges crush the
+     sparser mobile one, leaving back orbs as faint dots. Compressed ranges on mobile
+     keep them legible. Resolved once per frame, not per orb. */
+  var DEPTH_DESKTOP = {sBase:0.65, sRange:0.55, oBase:0.35, oRange:0.65};
+  var DEPTH_MOBILE  = {sBase:0.82, sRange:0.36, oBase:0.55, oRange:0.45};
+  function depthOf(){ return isMobile() ? DEPTH_MOBILE : DEPTH_DESKTOP; }
+  function lbOpen(){ var el = document.getElementById('lb'); return !!el && el.classList.contains('on'); }
+
+  function setCap(p){
+    sphereCap.innerHTML = p ? '<b>'+p.label+'</b><s>'+p.tag+'</s>'
+                            : '<b>Drag to explore</b>';
+  }
+
+  function makeOrb(p){
+    var d = document.createElement('div');
+    d.className = 'orb';
+    d.tabIndex = 0;
+    d.setAttribute('role','button');
+    d.setAttribute('aria-label', p.label + ' — ' + p.tag);
+    var im = new Image();
+    /* sizes before srcset before src, so the 500w -sm variant is chosen */
+    im.sizes = '84px';
+    im.srcset = srcsetOf(p);
+    im.src = p.src;
+    im.alt = p.label;
+    d.appendChild(im);
+    function open(){ var i = visible.indexOf(p); if(i >= 0) openLB(i); }
+    d.addEventListener('click', function(){ if(!moved) open(); });
+    d.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); open(); }
+    });
+    d.addEventListener('pointerenter', function(){ orbOf(d).hot = true; setCap(p); });
+    d.addEventListener('pointerleave', function(){ var o = orbOf(d); if(o) o.hot = false; setCap(null); });
+    d.addEventListener('focus', function(){ setCap(p); });
+    d.addEventListener('blur',  function(){ setCap(null); });
+    return d;
+  }
+  function orbOf(el){ for(var i=0;i<orbs.length;i++) if(orbs[i].el === el) return orbs[i]; return null; }
+
+  function render(){
+    /* Every photo except the archive set and the print spread — no category state. */
+    visible = PHOTOS.filter(function(p){ return p.cat !== 'archive' && p.cat !== 'print'; });
+    sphereInner.innerHTML = '';
+    orbs = visible.map(function(p){
+      var el = makeOrb(p);
+      sphereInner.appendChild(el);
+      return {el:el, p:p, cx:0, cy:0, cz:0, tx:0, ty:0, tz:0, fresh:true, hot:false};
+    });
+    layout();
+    setCap(null);
+    /* Paint once synchronously. rAF does not run in a background tab, so without this
+       a sphere built there would sit unpositioned until the tab was focused. */
+    draw();
+  }
+
+  /* Fibonacci lattice: even distribution over the sphere surface. */
+  function layout(){
+    var N = orbs.length, R = radiusOf();
+    orbs.forEach(function(o,i){
+      var y   = N === 1 ? 0 : 1 - (i/(N-1))*2;
+      var rad = Math.sqrt(Math.max(0, 1 - y*y));
+      var th  = Math.PI * (1 + Math.sqrt(5)) * i;
+      o.tx = Math.cos(th) * rad * R;
+      o.ty = y * R;
+      o.tz = Math.sin(th) * rad * R;
+      if(o.fresh){ o.cx = o.tx; o.cy = o.ty; o.cz = o.tz; o.fresh = false; }
+    });
+  }
+
+  function draw(){
+    var R  = radiusOf(), D = depthOf();
+    var a  = rotX * Math.PI/180, b = rotY * Math.PI/180;
+    var ca = Math.cos(a), sa = Math.sin(a), cb = Math.cos(b), sb = Math.sin(b);
+    sphereInner.style.transform = 'rotateX('+rotX.toFixed(3)+'deg) rotateY('+rotY.toFixed(3)+'deg)';
+
+    orbs.forEach(function(o,i){
+      o.cx += (o.tx - o.cx) * 0.18;
+      o.cy += (o.ty - o.cy) * 0.18;
+      o.cz += (o.tz - o.cz) * 0.18;
+
+      /* Per-orb drift on top of the lattice slot. The sphere turns as a rigid body,
+         so an orb near a pole barely travels; this keeps every one of them moving.
+         Incommensurate periods and per-index phase mean they never sync up. */
+      var dx = 0, dy = 0, dz = 0;
+      if(!RM){
+        dx = Math.sin(driftT*0.0004 + i*2.1) * DRIFT_XY;
+        dy = Math.cos(driftT*0.0005 + i*1.7) * DRIFT_XY;
+        dz = Math.sin(driftT*0.0003 + i*0.9) * DRIFT_Z;
+      }
+      var px = o.cx + dx, py = o.cy + dy, pz = o.cz + dz;
+
+      /* depth in camera space, matching the parent's rotateX(a) rotateY(b) order */
+      var z1 = -px*sb + pz*cb;
+      var depth = py*sa + z1*ca;
+
+      var t = (depth/R + 1)/2;               /* 0 at the back, 1 at the front */
+      if(t < 0) t = 0; else if(t > 1) t = 1;
+      var s = (D.sBase + D.sRange*t) * (o.hot ? 1.35 : 1);
+
+      /* Billboarding: the exact inverse of the parent rotation, so every photo stays
+         screen-aligned and upright. inverse(Rx(a)·Ry(b)) === Ry(-b)·Rx(-a). */
+      o.el.style.transform =
+        'translate3d('+px.toFixed(2)+'px,'+py.toFixed(2)+'px,'+pz.toFixed(2)+'px) '+
+        'rotateY('+(-rotY).toFixed(3)+'deg) rotateX('+(-rotX).toFixed(3)+'deg) '+
+        'scale('+s.toFixed(3)+')';
+      o.el.style.opacity = (D.oBase + D.oRange*t).toFixed(3);
+      o.el.style.zIndex  = String(Math.round(depth) + 1000);
+    });
+  }
+
+  function tick(ts){
+    driftT = ts || 0;          /* independent of drag/momentum, so drift never stops */
+    if(!dragging && !lbOpen()){
+      if(Math.abs(velY) > 0.02 || Math.abs(velX) > 0.02){
+        rotY += velY; rotX += velX;
+        rotX = Math.max(-35, Math.min(35, rotX));
+        velY *= 0.95; velX *= 0.95;
+      } else {
+        velY = 0; velX = 0;
+        if(!RM) rotY += AUTO;
+      }
+    }
+    draw();
+    requestAnimationFrame(tick);
+  }
+
+  /* ---- drag ---- */
+  var lastX = 0, lastY = 0, downX = 0, downY = 0;
+  sphere.addEventListener('pointerdown', function(e){
+    dragging = true; moved = false; pid = e.pointerId;
+    downX = lastX = e.clientX; downY = lastY = e.clientY;
+    velY = velX = 0;
+    sphere.classList.add('dragging');
+    try{ sphere.setPointerCapture(pid); }catch(_){}
+  });
+  sphere.addEventListener('pointermove', function(e){
+    if(!dragging) return;
+    var dx = e.clientX - lastX, dy = e.clientY - lastY;
+    lastX = e.clientX; lastY = e.clientY;
+    if(Math.abs(e.clientX-downX) > 4 || Math.abs(e.clientY-downY) > 4) moved = true;
+    /* Only a mostly-horizontal drag is ours; vertical stays with the page so it can
+       still scroll (touch-action:pan-y already enforces this on touch). */
+    if(e.cancelable && Math.abs(e.clientX-downX) > Math.abs(e.clientY-downY)) e.preventDefault();
+    rotY += dx * 0.35;
+    rotX = Math.max(-35, Math.min(35, rotX - dy * 0.25));
+    velY = dx * 0.35; velX = -dy * 0.25;
+  });
+  function endDrag(){
+    if(!dragging) return;
+    dragging = false;
+    sphere.classList.remove('dragging');
+    try{ sphere.releasePointerCapture(pid); }catch(_){}
+    if(RM){ velY = 0; velX = 0; }        /* no coasting under reduced motion */
+  }
+  sphere.addEventListener('pointerup', endDrag);
+  sphere.addEventListener('pointercancel', endDrag);
+  sphere.addEventListener('lostpointercapture', endDrag);
+  window.addEventListener('resize', layout);
+
+  /* ---------- clients ---------- */
+  var CLIENTS = [
+    {n:'Dolait', t:'Campaign', y:'—', live:false},
+    {n:'Le Jus de Tam Tam', t:'Campaign', y:'—', live:false},
+    {n:'Sistywax', t:'Campaign', y:'—', live:false},
+    {n:'Gari Kivo', t:'Campaign', y:'—', live:false},
+    {n:'Sco Chips', t:'Product', y:'—', live:true}
+  ];
+  var cl = document.getElementById('clientlist');
+  CLIENTS.forEach(function(c){
+    var d = document.createElement('div');
+    d.className = 'client rv ' + (c.live ? 'live' : 'soon');
+    d.innerHTML = '<div class="yr">'+c.y+'</div><h3>'+c.n+'</h3>'+
+      '<div class="tag">'+(c.live ? c.t : 'Coming soon')+'</div>';
+    cl.appendChild(d);
+  });
+
+  /* ---------- fixed images ---------- */
+  var pr = byId['p02'], po = byId['p24'];
+  /* Both sit in a grid that collapses to one column at 1020px. */
+  function setFixed(elId, p){
+    if(!p) return;
+    var el = document.getElementById(elId);
+    el.sizes = '(max-width: 1020px) 100vw, 50vw';
+    el.srcset = srcsetOf(p);
+    el.src = p.src;
+  }
+  setFixed('printimg', pr);
+  setFixed('portrait', po);
+
+  /* ---------- lightbox ---------- */
+  var lb=document.getElementById('lb'), lbi=document.getElementById('lbi'),
+      lbm=document.getElementById('lbm'), lbt=document.getElementById('lbt');
+  var cur = 0;
+  function openLB(i){
+    cur = i; lb.classList.add('on'); document.body.classList.add('locked');
+    paint();
+  }
+  function paint(){
+    var p = visible[cur]; if(!p) return;
+    lb.classList.remove('ready');
+    /* Full-screen view always gets the large file — never the 500px variant. */
+    lbi.removeAttribute('srcset');
+    lbi.src = p.src;
+    lbm.textContent = p.label;
+    lbt.textContent = p.tag;
+    requestAnimationFrame(function(){ setTimeout(function(){ lb.classList.add('ready'); }, 20); });
+  }
+  function closeLB(){ lb.classList.remove('on','ready'); document.body.classList.remove('locked'); }
+  function step(d){ cur = (cur + d + visible.length) % visible.length; paint(); }
+
+  document.getElementById('lbx').addEventListener('click', closeLB);
+  document.getElementById('lbp').addEventListener('click', function(e){ e.stopPropagation(); step(-1); });
+  document.getElementById('lbn').addEventListener('click', function(e){ e.stopPropagation(); step(1); });
+  lb.addEventListener('click', function(e){ if(e.target === lb) closeLB(); });
+
+  /* Swipe: horizontal travel over 50px steps through photos. Mostly-vertical
+     swipes are ignored so scrolling is unaffected. Listeners are passive —
+     they never call preventDefault, so they cannot block scrolling. */
+  var tsX = 0, tsY = 0;
+  lb.addEventListener('touchstart', function(e){
+    var t = e.changedTouches[0]; tsX = t.clientX; tsY = t.clientY;
+  }, {passive:true});
+  lb.addEventListener('touchend', function(e){
+    var t = e.changedTouches[0];
+    var dx = t.clientX - tsX, dy = t.clientY - tsY;
+    if(Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) step(dx < 0 ? 1 : -1);
+  }, {passive:true});
+  document.addEventListener('keydown', function(e){
+    if(!lb.classList.contains('on')) return;
+    if(e.key === 'Escape') closeLB();
+    if(e.key === 'ArrowLeft') step(-1);
+    if(e.key === 'ArrowRight') step(1);
+  });
+
+  render();
+  observe();
+  requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>
