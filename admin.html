@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="utf-8">
@@ -10,127 +10,79 @@
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;1,6..96,400&family=Archivo:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#0B0B0C;
-  --ink-2:#141416;
-  --ink-3:#1E1E22;
-  --bone:#F4F4F6;
-  --dim:#8E8E93;
-  --brass:#D4AF37;
-  --line:rgba(244,244,246,.12);
-  --success:#2ecc71;
-  --danger:#e74c3c;
-  --display:"Bodoni Moda",Georgia,serif;
-  --sans:"Archivo",-apple-system,sans-serif;
-  --pad:clamp(16px,4vw,48px);
+  --ink:#0B0B0C;--ink-2:#141416;--ink-3:#1E1E22;--bone:#F4F4F6;--dim:#8E8E93;
+  --brass:#D4AF37;--line:rgba(244,244,246,.12);--success:#2ecc71;--danger:#e74c3c;--warn:#f39c12;
+  --display:"Bodoni Moda",Georgia,serif;--sans:"Archivo",-apple-system,sans-serif;--pad:clamp(16px,4vw,48px);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{
-  background:var(--ink);color:var(--bone);font-family:var(--sans);
-  font-weight:300;min-height:100vh;padding-bottom:80px;
-}
+body{background:var(--ink);color:var(--bone);font-family:var(--sans);font-weight:300;min-height:100vh;padding-bottom:80px}
 a{color:inherit;text-decoration:none}
 button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
-
-header{
-  padding:24px var(--pad);border-bottom:1px solid var(--line);
-  display:flex;align-items:center;justify-content:space-between;
-  background:rgba(11,11,12,.85);backdrop-filter:blur(14px);position:sticky;top:0;z-index:50;
-}
+header{padding:24px var(--pad);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;background:rgba(11,11,12,.92);backdrop-filter:blur(14px);position:sticky;top:0;z-index:50}
 .brand{display:flex;align-items:center;gap:12px}
 .brand img{width:32px}
 .brand span{font-family:var(--display);font-size:18px;letter-spacing:.05em}
 .back-link{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);transition:color .3s}
 .back-link:hover{color:var(--brass)}
-
 .wrap{max-width:1100px;margin:0 auto;padding:36px var(--pad)}
-
 h1{font-family:var(--display);font-size:clamp(28px,4vw,44px);font-weight:400;margin-bottom:8px}
 .subtitle{color:var(--dim);font-size:14px;margin-bottom:36px}
-
+.config-banner{background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.25);border-radius:6px;padding:14px 18px;margin-bottom:28px;display:flex;align-items:center;gap:12px;font-size:13px;line-height:1.5}
+.config-banner.ok{background:rgba(46,204,113,.08);border-color:rgba(46,204,113,.25)}
+.config-banner.err{background:rgba(231,76,60,.08);border-color:rgba(231,76,60,.25)}
+.cfg-dot{width:8px;height:8px;border-radius:50%;background:var(--warn);flex-shrink:0}
+.config-banner.ok .cfg-dot{background:var(--success)}
+.config-banner.err .cfg-dot{background:var(--danger)}
 .tabs{display:flex;gap:12px;border-bottom:1px solid var(--line);margin-bottom:32px;overflow-x:auto}
-.tab-btn{
-  padding:12px 20px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--dim);border-bottom:2px solid transparent;transition:all .3s ease;white-space:nowrap;
-}
+.tab-btn{padding:12px 20px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);border-bottom:2px solid transparent;transition:all .3s ease;white-space:nowrap}
 .tab-btn.active{color:var(--bone);border-bottom-color:var(--brass);font-weight:500}
-
-.panel{display:none}
-.panel.active{display:block}
-
-.card{
-  background:var(--ink-2);border:1px solid var(--line);border-radius:8px;
-  padding:28px;margin-bottom:28px;
-}
-.card h2{
-  font-family:var(--display);font-size:22px;font-weight:400;margin-bottom:18px;
-  color:var(--brass);
-}
-
+.panel{display:none}.panel.active{display:block}
+.card{background:var(--ink-2);border:1px solid var(--line);border-radius:8px;padding:28px;margin-bottom:28px}
+.card h2{font-family:var(--display);font-size:22px;font-weight:400;margin-bottom:6px;color:var(--brass)}
+.card-desc{font-size:13px;color:var(--dim);margin-bottom:20px;line-height:1.6}
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 @media(max-width:768px){.grid-2{grid-template-columns:1fr}}
-
 .form-group{margin-bottom:18px}
 label{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-bottom:8px}
-input,select,textarea{
-  width:100%;padding:12px 14px;background:var(--ink-3);border:1px solid var(--line);
-  color:var(--bone);font-family:var(--sans);font-size:14px;border-radius:4px;
-  outline:none;transition:border-color .3s ease;
-}
+input,select,textarea{width:100%;padding:12px 14px;background:var(--ink-3);border:1px solid var(--line);color:var(--bone);font-family:var(--sans);font-size:14px;border-radius:4px;outline:none;transition:border-color .3s ease}
 input:focus,select:focus,textarea:focus{border-color:var(--brass)}
-
-.drop-zone{
-  border:2px dashed var(--line);border-radius:6px;padding:36px 20px;
-  text-align:center;cursor:pointer;transition:all .3s ease;background:var(--ink-3);
-}
-.drop-zone.dragover{border-color:var(--brass);background:rgba(212,175,55,.05)}
+.drop-zone{border:2px dashed var(--line);border-radius:6px;padding:36px 20px;text-align:center;cursor:pointer;transition:all .3s ease;background:var(--ink-3)}
+.drop-zone:hover,.drop-zone.dragover{border-color:var(--brass);background:rgba(212,175,55,.05)}
 .drop-zone p{font-size:13px;color:var(--dim);margin-top:8px}
-.drop-preview{
-  max-width:200px;max-height:200px;object-fit:cover;margin:12px auto;
-  border-radius:4px;display:none;border:1px solid var(--line);
-}
-
-.btn{
-  padding:13px 26px;background:var(--brass);color:var(--ink);font-size:11px;
-  letter-spacing:.2em;text-transform:uppercase;font-weight:600;border-radius:4px;
-  transition:all .3s ease;display:inline-flex;align-items:center;gap:8px;
-}
+.drop-preview{max-width:200px;max-height:200px;object-fit:cover;margin:12px auto;border-radius:4px;display:none;border:1px solid var(--line)}
+.btn{padding:13px 26px;background:var(--brass);color:var(--ink);font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;border-radius:4px;transition:all .3s ease;display:inline-flex;align-items:center;gap:8px}
 .btn:hover{filter:brightness(1.1);transform:translateY(-1px)}
-.btn-outline{
-  background:none;border:1px solid var(--line);color:var(--bone);
-}
+.btn:disabled{opacity:.45;pointer-events:none}
+.btn-outline{background:none;border:1px solid var(--line);color:var(--bone)}
 .btn-outline:hover{border-color:var(--bone)}
-.btn-danger{
-  background:none;border:1px solid rgba(231,76,60,.4);color:var(--danger);
-  padding:6px 12px;font-size:10px;border-radius:3px;
-}
+.btn-danger{background:none;border:1px solid rgba(231,76,60,.4);color:var(--danger);padding:6px 12px;font-size:10px;border-radius:3px}
 .btn-danger:hover{background:var(--danger);color:#fff}
-
-.client-list, .photo-list{
-  display:grid;grid-template-columns:repeat(auto-fill, minmax(240px, 1fr));gap:16px;
-}
-.item-box{
-  background:var(--ink-3);border:1px solid var(--line);padding:16px;
-  border-radius:6px;display:flex;flex-direction:column;justify-content:space-between;
-}
-.item-box img{
-  width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:4px;margin-bottom:12px;
-}
+.client-list,.photo-list{display:grid;grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));gap:16px;margin-top:8px}
+.item-box{background:var(--ink-3);border:1px solid var(--line);padding:16px;border-radius:6px;display:flex;flex-direction:column;justify-content:space-between}
+.item-box img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:4px;margin-bottom:12px;background:var(--ink-2)}
 .item-box h4{font-size:15px;color:var(--bone);margin-bottom:4px}
 .item-box .meta{font-size:11px;letter-spacing:.12em;color:var(--brass);text-transform:uppercase}
-.item-box .actions{margin-top:14px;display:flex;justify-content:space-between;align-items:center}
-
-.badge{
-  font-size:9px;letter-spacing:.15em;text-transform:uppercase;padding:3px 7px;
-  border-radius:2px;font-weight:500;
-}
+.item-box .actions{margin-top:14px;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.badge{font-size:9px;letter-spacing:.15em;text-transform:uppercase;padding:3px 7px;border-radius:2px;font-weight:500}
 .badge-live{background:rgba(46,204,113,.15);color:var(--success);border:1px solid rgba(46,204,113,.3)}
 .badge-soon{background:rgba(142,142,147,.15);color:var(--dim);border:1px solid rgba(142,142,147,.3)}
-
-.status-msg{
-  padding:14px;border-radius:4px;font-size:13px;margin-top:16px;display:none;
-}
+.status-msg{padding:14px;border-radius:4px;font-size:13px;margin-top:16px;display:none;line-height:1.5;white-space:pre-line}
 .status-msg.ok{background:rgba(46,204,113,.15);color:var(--success);border:1px solid var(--success)}
 .status-msg.err{background:rgba(231,76,60,.15);color:var(--danger);border:1px solid var(--danger)}
+.status-msg.info{background:rgba(212,175,55,.12);color:var(--brass);border:1px solid rgba(212,175,55,.4)}
+.progress-bar{height:4px;background:var(--ink-3);border-radius:2px;margin-top:12px;overflow:hidden;display:none}
+.progress-fill{height:100%;background:var(--brass);border-radius:2px;transition:width .4s ease}
+.steps{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+.step{padding:4px 12px;border-radius:20px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;background:var(--ink-3);color:var(--dim);border:1px solid var(--line)}
+.step.done{background:rgba(46,204,113,.12);color:var(--success);border-color:rgba(46,204,113,.3)}
+.step.active{background:rgba(212,175,55,.12);color:var(--brass);border-color:rgba(212,175,55,.3)}
+.token-wrap{position:relative}
+.token-wrap input{padding-right:60px}
+.show-tok{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:11px;color:var(--dim);cursor:pointer;letter-spacing:.1em;text-transform:uppercase}
+.show-tok:hover{color:var(--bone)}
+.empty{text-align:center;padding:40px 20px;color:var(--dim);font-size:13px;grid-column:1/-1}
+.empty span{font-size:32px;display:block;margin-bottom:10px}
+code{background:var(--ink-3);padding:2px 6px;border-radius:3px;font-size:12px}
 </style>
 </head>
 <body>
@@ -140,23 +92,30 @@ input:focus,select:focus,textarea:focus{border-color:var(--brass)}
     <img src="assets/logo.png" alt="OB Shots">
     <span>Original Brave Studio</span>
   </div>
-  <a href="index.html" class="back-link">← Voir le Site</a>
+  <a href="index.html" class="back-link">&larr; Voir le Site</a>
 </header>
 
 <main class="wrap">
   <h1>Studio Manager</h1>
-  <p class="subtitle">Gérez vos photos, vos clients et vos campagnes en toute simplicité.</p>
+  <p class="subtitle">Gerez vos photos, vos clients et vos campagnes - publiez en un clic sur GitHub Pages.</p>
 
-  <div class="tabs">
-    <button class="tab-btn active" onclick="showTab('tab-clients')">Clients &amp; Campagnes</button>
-    <button class="tab-btn" onclick="showTab('tab-photos')">Ajouter une Photo</button>
-    <button class="tab-btn" onclick="showTab('tab-github')">Paramètres &amp; Publication</button>
+  <div id="config-banner" class="config-banner">
+    <div class="cfg-dot"></div>
+    <span id="config-msg">Token GitHub non configure. Rendez-vous dans l'onglet <strong>Parametres</strong> pour activer la publication automatique.</span>
   </div>
 
-  <!-- ONGLET CLIENTS -->
+  <div class="tabs">
+    <button class="tab-btn active" id="tbtn-clients" onclick="showTab('tab-clients','tbtn-clients')">Clients &amp; Campagnes</button>
+    <button class="tab-btn" id="tbtn-photos" onclick="showTab('tab-photos','tbtn-photos')">Ajouter une Photo</button>
+    <button class="tab-btn" id="tbtn-gallery" onclick="showTab('tab-gallery','tbtn-gallery')">Galerie Actuelle</button>
+    <button class="tab-btn" id="tbtn-settings" onclick="showTab('tab-settings','tbtn-settings')">Parametres</button>
+  </div>
+
+  <!-- CLIENTS -->
   <div id="tab-clients" class="panel active">
     <div class="card">
       <h2>Nouveau Client ou Campagne</h2>
+      <p class="card-desc">Ajoutez un client puis cliquez sur <strong>Publier vers GitHub</strong> pour mettre le site a jour instantanement.</p>
       <form id="form-client" onsubmit="addClient(event)">
         <div class="grid-2">
           <div class="form-group">
@@ -169,44 +128,58 @@ input:focus,select:focus,textarea:focus{border-color:var(--brass)}
               <option value="Campaign">Campagne</option>
               <option value="Product">Photographie Produit</option>
               <option value="Portrait">Portrait &amp; Mode</option>
-              <option value="Events">Couverture Événement</option>
+              <option value="Events">Couverture Evenement</option>
             </select>
           </div>
         </div>
         <div class="grid-2">
           <div class="form-group">
-            <label for="client-year">Année ou référence</label>
+            <label for="client-year">Annee ou reference</label>
             <input type="text" id="client-year" value="2026" placeholder="Ex: 2026 ou -">
           </div>
           <div class="form-group">
             <label for="client-status">Statut de diffusion</label>
             <select id="client-status">
               <option value="true">En ligne (Live)</option>
-              <option value="false">Bientôt disponible (Coming soon)</option>
+              <option value="false">Bientot disponible</option>
             </select>
           </div>
         </div>
-        <button type="submit" class="btn">+ Ajouter à la liste</button>
+        <button type="submit" class="btn">+ Ajouter</button>
       </form>
     </div>
-
     <div class="card">
       <h2>Clients &amp; Campagnes Actuels</h2>
       <div id="clients-container" class="client-list"></div>
+      <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap">
+        <button class="btn" onclick="publishClients()">&#128640; Publier vers GitHub</button>
+        <button class="btn btn-outline" onclick="exportClientsJSON()">Exporter JSON</button>
+      </div>
+      <div id="clients-status" class="status-msg"></div>
+      <div class="progress-bar" id="clients-progress"><div class="progress-fill" id="clients-fill" style="width:0%"></div></div>
     </div>
   </div>
 
-  <!-- ONGLET PHOTOS -->
+  <!-- AJOUT PHOTO -->
   <div id="tab-photos" class="panel">
     <div class="card">
       <h2>Ajouter une Nouvelle Photo</h2>
-      <form id="form-photo" onsubmit="addPhoto(event)">
+      <p class="card-desc">Choisissez votre image, remplissez les informations, puis cliquez sur <strong>Uploader vers GitHub</strong>. La photo sera directement integree au portfolio en ligne.</p>
+      <div class="steps">
+        <div class="step active" id="step-1">1 - Fichier</div>
+        <div class="step" id="step-2">2 - Metadonnees</div>
+        <div class="step" id="step-3">3 - Publication</div>
+      </div>
+      <form id="form-photo" onsubmit="uploadPhoto(event)">
         <div class="form-group">
-          <label>Fichier Image (JPG, PNG, WebP)</label>
-          <div class="drop-zone" id="drop-zone" onclick="document.getElementById('photo-file').click()">
-            <div style="font-size:26px">📷</div>
-            <p>Glissez-déposez votre photo ici ou cliquez pour choisir un fichier</p>
-            <img id="preview-img" class="drop-preview" alt="Prévisualisation">
+          <label>Fichier Image (JPG, PNG, WebP - max 8 Mo)</label>
+          <div class="drop-zone" id="drop-zone" onclick="document.getElementById('photo-file').click()"
+               ondragover="event.preventDefault();this.classList.add('dragover')"
+               ondragleave="this.classList.remove('dragover')"
+               ondrop="handleDrop(event)">
+            <div style="font-size:28px">&#128247;</div>
+            <p id="drop-label">Glissez-deposez votre photo ici ou cliquez pour choisir</p>
+            <img id="preview-img" class="drop-preview" alt="Previsualisation">
             <input type="file" id="photo-file" accept="image/*" style="display:none" onchange="previewFile(event)">
           </div>
         </div>
@@ -216,173 +189,345 @@ input:focus,select:focus,textarea:focus{border-color:var(--brass)}
             <input type="text" id="photo-title" placeholder="Ex: Silk &amp; Shadow" required>
           </div>
           <div class="form-group">
-            <label for="photo-tag">Lieu ou Type (Tag)</label>
+            <label for="photo-tag">Type de prise de vue (Tag)</label>
             <select id="photo-tag">
               <option value="Studio">Studio</option>
-              <option value="Location">Extérieur (Location)</option>
-              <option value="Event">Événement</option>
+              <option value="Location">Exterieur (Location)</option>
+              <option value="Event">Evenement</option>
               <option value="Product">Produit</option>
-              <option value="Editorial">Éditorial</option>
+              <option value="Editorial">Editorial</option>
               <option value="Print">Presse (Print)</option>
             </select>
           </div>
         </div>
         <div class="grid-2">
           <div class="form-group">
-            <label for="photo-cat">Catégorie du portfolio</label>
+            <label for="photo-cat">Categorie du portfolio</label>
             <select id="photo-cat">
               <option value="fashion">Mode (Fashion)</option>
               <option value="portrait">Portrait</option>
-              <option value="events">Événements (Events)</option>
+              <option value="events">Evenements</option>
               <option value="brands">Marques (Brands)</option>
               <option value="archive">Archive</option>
               <option value="print">Presse (Print)</option>
             </select>
           </div>
           <div class="form-group">
-            <label for="photo-id">Identifiant technique</label>
-            <input type="text" id="photo-id" placeholder="Ex: p25" required>
+            <label for="photo-id">Identifiant unique (ex: p25)</label>
+            <input type="text" id="photo-id" placeholder="p25" required>
           </div>
         </div>
-        <button type="submit" class="btn">+ Enregistrer la photo</button>
+        <button type="submit" class="btn" id="upload-btn">&#8679; Uploader vers GitHub</button>
       </form>
+      <div id="upload-status" class="status-msg"></div>
+      <div class="progress-bar" id="upload-progress"><div class="progress-fill" id="upload-fill" style="width:0%"></div></div>
     </div>
+  </div>
 
+  <!-- GALERIE -->
+  <div id="tab-gallery" class="panel">
     <div class="card">
       <h2>Galerie Actuelle du Portfolio</h2>
-      <div id="photos-container" class="photo-list"></div>
+      <p class="card-desc">Toutes les photos integrees dans le site. Necessite un token GitHub valide pour charger depuis le depot.</p>
+      <div id="photos-container" class="photo-list"><div class="empty"><span>&#9203;</span>Cliquez sur cet onglet pour charger.</div></div>
+      <div id="gallery-status" class="status-msg"></div>
     </div>
   </div>
 
-  <!-- ONGLET PUBLICATION GITHUB -->
-  <div id="tab-github" class="panel">
+  <!-- PARAMETRES -->
+  <div id="tab-settings" class="panel">
     <div class="card">
-      <h2>Connexion GitHub (Publication en 1 Clic)</h2>
-      <p style="color:var(--dim);font-size:14px;margin-bottom:18px;line-height:1.6">
-        En enregistrant votre <b>GitHub Token</b> (Personnel Access Token), toute modification ou ajout de photo / client se publie immédiatement en ligne sur GitHub Pages sans avoir besoin de logiciel supplémentaire.
+      <h2>Connexion GitHub</h2>
+      <p class="card-desc">
+        Configurez votre depot et votre <strong>Personal Access Token</strong> (PAT classic avec permission <code>repo</code>).<br>
+        <strong>Creer un token :</strong> GitHub &rarr; Settings &rarr; Developer settings &rarr; Personal access tokens &rarr; Tokens (classic) &rarr; Generate &rarr; cocher "repo".
       </p>
       <div class="form-group">
-        <label for="gh-token">GitHub Personal Access Token (classic avec droit repo)</label>
-        <input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
+        <label for="gh-repo">Depot GitHub (owner/repo)</label>
+        <input type="text" id="gh-repo" placeholder="tatasanvi/B_shots">
+      </div>
+      <div class="form-group">
+        <label for="gh-branch">Branche cible</label>
+        <input type="text" id="gh-branch" placeholder="main">
+      </div>
+      <div class="form-group">
+        <label for="gh-token">GitHub Personal Access Token</label>
+        <div class="token-wrap">
+          <input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
+          <span class="show-tok" onclick="toggleTok()">Afficher</span>
+        </div>
       </div>
       <div style="display:flex;gap:12px;flex-wrap:wrap">
-        <button type="button" class="btn" onclick="saveToken()">Sauvegarder le Jeton</button>
-        <button type="button" class="btn btn-outline" onclick="pushToGitHub()">🚀 Publier les modifications sur GitHub</button>
+        <button class="btn" onclick="saveSettings()">Sauvegarder</button>
+        <button class="btn btn-outline" onclick="testConnection()">Tester la connexion</button>
+        <button class="btn-danger" style="padding:13px 20px;border-radius:4px;font-size:11px;letter-spacing:.1em;border:1px solid rgba(231,76,60,.4)" onclick="clearSettings()">Effacer tout</button>
       </div>
-      <div id="gh-status" class="status-msg"></div>
+      <div id="settings-status" class="status-msg"></div>
+    </div>
+    <div class="card">
+      <h2>Informations du Depot</h2>
+      <div id="repo-info" class="card-desc">Aucune information chargee. Testez la connexion d'abord.</div>
     </div>
   </div>
+
 </main>
 
 <script>
-// Clients initiaux synchronisés avec le site
-var clients = [
-  {n:'Dolait', t:'Campaign', y:'-', live:false},
-  {n:'Le Jus de Tam Tam', t:'Campaign', y:'-', live:false},
-  {n:'Sistywax', t:'Campaign', y:'-', live:false},
-  {n:'Gari Kivo', t:'Campaign', y:'-', live:false},
-  {n:'Sco Chips', t:'Product', y:'-', live:true}
-];
+var GH={repo:localStorage.getItem('obs_gh_repo')||'tatasanvi/B_shots',branch:localStorage.getItem('obs_gh_branch')||'main',token:localStorage.getItem('obs_gh_token')||''};
+var clients=[];
+try{var sc=localStorage.getItem('obs_admin_clients');if(sc)clients=JSON.parse(sc);}catch(_){}
+if(!clients.length)clients=[{n:'Dolait',t:'Campaign',y:'-',live:false},{n:'Le Jus de Tam Tam',t:'Campaign',y:'-',live:false},{n:'Sistywax',t:'Campaign',y:'-',live:false},{n:'Gari Kivo',t:'Campaign',y:'-',live:false},{n:'Sco Chips',t:'Product',y:'-',live:true}];
+var currentPhotoFile=null,currentPhotoB64=null;
 
-// Chargement depuis localStorage si présent
-try {
-  var savedClients = localStorage.getItem('obs_admin_clients');
-  if(savedClients) clients = JSON.parse(savedClients);
-} catch(_) {}
-
-function showTab(id){
-  document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
-  document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('active'); });
+function showTab(id,btnId){
+  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});
+  document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active');});
   document.getElementById(id).classList.add('active');
-  event.target.classList.add('active');
+  document.getElementById(btnId).classList.add('active');
+  if(id==='tab-gallery')loadGallery();
 }
 
+function updateBanner(){
+  var banner=document.getElementById('config-banner'),msg=document.getElementById('config-msg');
+  if(GH.token&&GH.repo){banner.className='config-banner ok';msg.innerHTML='Token GitHub configure pour <strong>'+GH.repo+'</strong> (branche: '+(GH.branch||'main')+'). Publication activee.';}
+  else{banner.className='config-banner';msg.innerHTML='Token GitHub non configure. Rendez-vous dans l\'onglet <strong>Parametres</strong>.';}
+}
+
+function saveSettings(){
+  GH.repo=document.getElementById('gh-repo').value.trim()||'tatasanvi/B_shots';
+  GH.branch=document.getElementById('gh-branch').value.trim()||'main';
+  GH.token=document.getElementById('gh-token').value.trim();
+  localStorage.setItem('obs_gh_repo',GH.repo);
+  localStorage.setItem('obs_gh_branch',GH.branch);
+  if(GH.token)localStorage.setItem('obs_gh_token',GH.token);
+  updateBanner();
+  showStatus('settings-status','ok','Parametres sauvegardes.');
+}
+
+function clearSettings(){
+  if(!confirm('Effacer le token et toutes les donnees locales ?'))return;
+  ['obs_gh_token','obs_gh_repo','obs_gh_branch','obs_admin_clients'].forEach(function(k){localStorage.removeItem(k);});
+  document.getElementById('gh-token').value='';GH.token='';
+  updateBanner();showStatus('settings-status','ok','Donnees effacees.');
+}
+
+function toggleTok(){
+  var i=document.getElementById('gh-token'),b=document.querySelector('.show-tok');
+  if(i.type==='password'){i.type='text';b.textContent='Masquer';}else{i.type='password';b.textContent='Afficher';}
+}
+
+async function testConnection(){
+  if(!GH.token||!GH.repo){showStatus('settings-status','err','Configurez le depot et le token.');return;}
+  showStatus('settings-status','info','Test en cours...');
+  try{
+    var res=await ghFetch('GET','https://api.github.com/repos/'+GH.repo);
+    if(!res.ok)throw new Error('HTTP '+res.status+' - Verifiez le nom du depot et les droits du token.');
+    var d=await res.json();
+    document.getElementById('repo-info').innerHTML='<strong>'+d.full_name+'</strong><br>Visibilite : '+(d.private?'Prive':'Public')+'<br>Branche par defaut : '+d.default_branch+'<br>Dernier push : '+new Date(d.pushed_at).toLocaleString('fr-FR');
+    showStatus('settings-status','ok','Connexion reussie !');updateBanner();
+  }catch(e){showStatus('settings-status','err','Echec : '+e.message);}
+}
+
+function ghFetch(method,url,body){
+  var opts={method:method,headers:{'Authorization':'token '+GH.token,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'}};
+  if(body)opts.body=JSON.stringify(body);
+  return fetch(url,opts);
+}
+
+async function getFileSHA(path){
+  try{var res=await ghFetch('GET','https://api.github.com/repos/'+GH.repo+'/contents/'+path+'?ref='+(GH.branch||'main'));if(!res.ok)return null;var d=await res.json();return d.sha||null;}catch(_){return null;}
+}
+
+async function ghPutFile(path,b64,message,sha){
+  var body={message:message,content:b64,branch:GH.branch||'main'};
+  if(sha)body.sha=sha;
+  var res=await ghFetch('PUT','https://api.github.com/repos/'+GH.repo+'/contents/'+path,body);
+  if(!res.ok){var err=await res.json().catch(function(){return{};});throw new Error(err.message||'HTTP '+res.status);}
+  return res.json();
+}
+
+async function getFileContent(path){
+  var res=await ghFetch('GET','https://api.github.com/repos/'+GH.repo+'/contents/'+path+'?ref='+(GH.branch||'main'));
+  if(!res.ok)throw new Error('Impossible de lire '+path+' (HTTP '+res.status+')');
+  var d=await res.json();
+  return{content:atob(d.content.replace(/\n/g,'')),sha:d.sha};
+}
+
+// PHOTO UPLOAD
+function handleDrop(e){e.preventDefault();document.getElementById('drop-zone').classList.remove('dragover');var f=e.dataTransfer.files[0];if(f&&f.type.startsWith('image/'))loadPhotoFile(f);}
+function previewFile(e){var f=e.target.files[0];if(f)loadPhotoFile(f);}
+
+function loadPhotoFile(file){
+  currentPhotoFile=file;
+  var reader=new FileReader();
+  reader.onload=function(evt){
+    currentPhotoB64=evt.target.result.split(',')[1];
+    var prev=document.getElementById('preview-img');
+    prev.src=evt.target.result;prev.style.display='block';
+    document.getElementById('drop-label').textContent=file.name+' ('+Math.round(file.size/1024)+' Ko)';
+    setStep(2);
+  };
+  reader.readAsDataURL(file);
+}
+
+function setStep(n){for(var i=1;i<=3;i++){var s=document.getElementById('step-'+i);s.className='step'+(i<n?' done':(i===n?' active':''));}}
+
+async function uploadPhoto(e){
+  e.preventDefault();
+  if(!currentPhotoB64){showStatus('upload-status','err','Selectionnez d\'abord une image.');return;}
+  if(!GH.token||!GH.repo){showStatus('upload-status','err','Token GitHub non configure. Allez dans Parametres.');return;}
+  var title=document.getElementById('photo-title').value.trim();
+  var tag=document.getElementById('photo-tag').value;
+  var cat=document.getElementById('photo-cat').value;
+  var pid=document.getElementById('photo-id').value.trim().replace(/[^a-z0-9_-]/gi,'');
+  var ext=currentPhotoFile.name.split('.').pop().toLowerCase();
+  if(ext==='jpeg')ext='jpg';
+  if(!pid){showStatus('upload-status','err','Identifiant invalide.');return;}
+
+  setStep(3);
+  document.getElementById('upload-btn').disabled=true;
+  showProgress('upload-progress','upload-fill',15);
+
+  var uploadPath='assets/photos/'+pid+'.'+ext;
+
+  try{
+    showStatus('upload-status','info','Etape 1/3 - Upload de l\'image vers GitHub...');
+    showProgress('upload-progress','upload-fill',30);
+    var imgSha=await getFileSHA(uploadPath);
+    await ghPutFile(uploadPath,currentPhotoB64,'feat: photo '+pid+' - '+title,imgSha);
+
+    showProgress('upload-progress','upload-fill',55);
+    showStatus('upload-status','info','Etape 2/3 - Mise a jour du catalogue index.html...');
+
+    var indexData=await getFileContent('index.html');
+    var html=indexData.content;
+
+    var imgEl=new Image();
+    await new Promise(function(res){imgEl.onload=res;imgEl.onerror=res;imgEl.src=URL.createObjectURL(currentPhotoFile);});
+    var w=imgEl.naturalWidth||720,h=imgEl.naturalHeight||1080;
+
+    var newEntry=',\n{\n"id": "'+pid+'",\n"cat": "'+cat+'",\n"label": "'+title.replace(/\\/g,'\\\\').replace(/"/g,'\\"')+'",\n"tag": "'+tag+'",\n"src": "assets/photos/'+pid+'.'+ext+'",\n"w": '+w+',\n"h": '+h+'\n}';
+    var marker='];</script>';
+    if(html.indexOf(marker)===-1)throw new Error('Marqueur PHOTOS introuvable dans index.html.');
+    html=html.replace(marker,newEntry+'\n'+marker);
+
+    showProgress('upload-progress','upload-fill',80);
+    showStatus('upload-status','info','Etape 3/3 - Publication du catalogue...');
+    var newB64=btoa(unescape(encodeURIComponent(html)));
+    await ghPutFile('index.html',newB64,'feat: catalogue - ajout photo '+pid,indexData.sha);
+
+    showProgress('upload-progress','upload-fill',100);
+    showStatus('upload-status','ok','Photo "'+title+'" publiee avec succes !\nLe site se met a jour dans 1 a 3 minutes.\nhttps://'+GH.repo.split('/')[0]+'.github.io/'+GH.repo.split('/')[1]+'/');
+    setTimeout(function(){
+      document.getElementById('form-photo').reset();
+      document.getElementById('preview-img').style.display='none';
+      document.getElementById('drop-label').textContent='Glissez-deposez votre photo ici ou cliquez pour choisir';
+      currentPhotoFile=null;currentPhotoB64=null;setStep(1);hideProgress('upload-progress');
+    },5000);
+  }catch(err){showStatus('upload-status','err','Erreur : '+err.message);hideProgress('upload-progress');setStep(2);}
+  document.getElementById('upload-btn').disabled=false;
+}
+
+// GALLERY
+async function loadGallery(){
+  var container=document.getElementById('photos-container');
+  container.innerHTML='<div class="empty"><span>&#9203;</span>Chargement...</div>';
+  if(!GH.token){container.innerHTML='<div class="empty"><span>&#128274;</span>Configurez un token GitHub dans Parametres pour voir la galerie.</div>';return;}
+  try{
+    var indexData=await getFileContent('index.html');
+    var match=indexData.content.match(/const PHOTOS = \[([\s\S]*?)\];<\/script>/);
+    if(!match)throw new Error('Tableau PHOTOS introuvable.');
+    var photos=JSON.parse('['+match[1]+']');
+    renderGallery(photos);
+  }catch(e){
+    showStatus('gallery-status','err','Erreur de chargement : '+e.message);
+    container.innerHTML='<div class="empty"><span>&#9888;</span>Erreur.</div>';
+  }
+}
+
+function renderGallery(photos){
+  var c=document.getElementById('photos-container');
+  if(!photos.length){c.innerHTML='<div class="empty"><span>&#128247;</span>Aucune photo.</div>';return;}
+  c.innerHTML='';
+  var cats={fashion:'Mode',portrait:'Portrait',events:'Evenements',brands:'Marques',archive:'Archive',print:'Presse'};
+  photos.forEach(function(p){
+    var box=document.createElement('div');box.className='item-box';
+    box.innerHTML='<img src="'+p.src+'" alt="'+(p.label||'')+'" loading="lazy">'+
+      '<div><h4>'+(p.label||'Sans titre')+'</h4>'+
+      '<div class="meta">'+(cats[p.cat]||p.cat)+' - '+(p.tag||'')+'</div>'+
+      '<div style="margin-top:6px;font-size:11px;color:var(--dim)">'+p.id+'</div></div>';
+    c.appendChild(box);
+  });
+}
+
+// CLIENTS
+function saveClients(){try{localStorage.setItem('obs_admin_clients',JSON.stringify(clients));}catch(_){}}
+
 function renderClientsList(){
-  var container = document.getElementById('clients-container');
-  container.innerHTML = '';
-  clients.forEach(function(c, idx){
-    var box = document.createElement('div');
-    box.className = 'item-box';
-    box.innerHTML = '<div>' +
-      '<h4>' + c.n + '</h4>' +
-      '<div class="meta">' + c.t + ' (' + c.y + ')</div>' +
-      '<div style="margin-top:8px"><span class="badge ' + (c.live ? 'badge-live' : 'badge-soon') + '">' + (c.live ? 'En ligne' : 'Bientôt disponible') + '</span></div>' +
-      '</div>' +
-      '<div class="actions">' +
-        '<button type="button" class="btn-outline" style="padding:4px 8px;font-size:10px" onclick="toggleClientStatus(' + idx + ')">Basculer statut</button>' +
-        '<button type="button" class="btn-danger" onclick="deleteClient(' + idx + ')">Supprimer</button>' +
+  var c=document.getElementById('clients-container');
+  if(!clients.length){c.innerHTML='<div class="empty"><span>&#128101;</span>Aucun client.</div>';return;}
+  c.innerHTML='';
+  clients.forEach(function(cl,idx){
+    var box=document.createElement('div');box.className='item-box';
+    box.innerHTML='<div><h4>'+esc(cl.n)+'</h4><div class="meta">'+esc(cl.t)+' ('+esc(cl.y)+')</div>'+
+      '<div style="margin-top:8px"><span class="badge '+(cl.live?'badge-live':'badge-soon')+'">'+(cl.live?'En ligne':'Bientot')+'</span></div></div>'+
+      '<div class="actions">'+
+        '<button type="button" class="btn-outline" style="padding:5px 10px;font-size:10px;border-radius:3px;border:1px solid var(--line)" onclick="toggleClientStatus('+idx+')">'+(cl.live?'Masquer':'Mettre en ligne')+'</button>'+
+        '<button type="button" class="btn-danger" onclick="deleteClient('+idx+')">Supprimer</button>'+
       '</div>';
-    container.appendChild(box);
+    c.appendChild(box);
   });
 }
 
 function addClient(e){
   e.preventDefault();
-  var name = document.getElementById('client-name').value.trim();
-  var type = document.getElementById('client-type').value;
-  var year = document.getElementById('client-year').value.trim() || '-';
-  var live = document.getElementById('client-status').value === 'true';
-
-  if(!name) return;
-  clients.push({n:name, t:type, y:year, live:live});
-  try { localStorage.setItem('obs_admin_clients', JSON.stringify(clients)); } catch(_) {}
-  renderClientsList();
-  e.target.reset();
-  alert('Client "' + name + '" ajouté avec succès !');
+  var name=document.getElementById('client-name').value.trim();
+  var type=document.getElementById('client-type').value;
+  var year=document.getElementById('client-year').value.trim()||'-';
+  var live=document.getElementById('client-status').value==='true';
+  if(!name)return;
+  clients.push({n:name,t:type,y:year,live:live});
+  saveClients();renderClientsList();e.target.reset();
+  showStatus('clients-status','ok','Client "'+name+'" ajoute !');
 }
 
-function toggleClientStatus(idx){
-  clients[idx].live = !clients[idx].live;
-  try { localStorage.setItem('obs_admin_clients', JSON.stringify(clients)); } catch(_) {}
-  renderClientsList();
+function toggleClientStatus(idx){clients[idx].live=!clients[idx].live;saveClients();renderClientsList();}
+function deleteClient(idx){if(!confirm('Supprimer "'+clients[idx].n+'" ?'))return;clients.splice(idx,1);saveClients();renderClientsList();}
+function exportClientsJSON(){var blob=new Blob([JSON.stringify(clients,null,2)],{type:'application/json'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='clients.json';a.click();}
+
+async function publishClients(){
+  if(!GH.token||!GH.repo){showStatus('clients-status','err','Token GitHub non configure.');return;}
+  showStatus('clients-status','info','Publication en cours...');
+  showProgress('clients-progress','clients-fill',20);
+  try{
+    var indexData=await getFileContent('index.html');
+    var html=indexData.content;
+    var clientsJs=clients.map(function(c){
+      return '{n:'+JSON.stringify(c.n)+',t:'+JSON.stringify(c.t)+',y:'+JSON.stringify(c.y)+',live:'+c.live+'}';
+    }).join(',\n  ');
+    var re=/var CLIENTS\s*=\s*\[[\s\S]*?\];/;
+    var newBlock='var CLIENTS = [\n  '+clientsJs+'\n];';
+    if(!re.test(html))throw new Error('Bloc CLIENTS introuvable dans index.html. Assurez-vous que le code contient "var CLIENTS = [...]".');
+    html=html.replace(re,newBlock);
+    showProgress('clients-progress','clients-fill',65);
+    var newB64=btoa(unescape(encodeURIComponent(html)));
+    await ghPutFile('index.html',newB64,'feat: mise a jour clients depuis admin',indexData.sha);
+    showProgress('clients-progress','clients-fill',100);
+    showStatus('clients-status','ok','Clients publies sur GitHub. Site mis a jour dans 1 a 3 minutes.');
+    setTimeout(function(){hideProgress('clients-progress');},3000);
+  }catch(err){showStatus('clients-status','err','Erreur : '+err.message);hideProgress('clients-progress');}
 }
 
-function deleteClient(idx){
-  if(confirm('Supprimer ce client ?')){
-    clients.splice(idx, 1);
-    try { localStorage.setItem('obs_admin_clients', JSON.stringify(clients)); } catch(_) {}
-    renderClientsList();
-  }
-}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function showStatus(id,type,msg){var el=document.getElementById(id);el.className='status-msg '+type;el.style.display='block';el.textContent=msg;}
+function showProgress(barId,fillId,pct){document.getElementById(barId).style.display='block';document.getElementById(fillId).style.width=pct+'%';}
+function hideProgress(barId){document.getElementById(barId).style.display='none';}
 
-// Gestion des photos
-var currentPhotoFile = null;
-function previewFile(e){
-  var file = e.target.files[0];
-  if(!file) return;
-  currentPhotoFile = file;
-  var reader = new FileReader();
-  reader.onload = function(evt){
-    var preview = document.getElementById('preview-img');
-    preview.src = evt.target.result;
-    preview.style.display = 'block';
-  };
-  reader.readAsDataURL(file);
-}
-
-function addPhoto(e){
-  e.preventDefault();
-  var title = document.getElementById('photo-title').value.trim();
-  var tag = document.getElementById('photo-tag').value;
-  var cat = document.getElementById('photo-cat').value;
-  var id = document.getElementById('photo-id').value.trim();
-
-  alert('Photo "' + title + '" préparée avec succès ! Vous pouvez la synchroniser avec GitHub dans l\'onglet Paramètres & Publication.');
-}
-
-function saveToken(){
-  var tok = document.getElementById('gh-token').value.trim();
-  if(tok){
-    localStorage.setItem('obs_gh_token', tok);
-    alert('Jeton GitHub sauvegardé localement.');
-  }
-}
-
-// Initialisation au chargement
-window.addEventListener('DOMContentLoaded', function(){
-  renderClientsList();
-  var savedToken = localStorage.getItem('obs_gh_token');
-  if(savedToken) document.getElementById('gh-token').value = savedToken;
+window.addEventListener('DOMContentLoaded',function(){
+  document.getElementById('gh-repo').value=GH.repo;
+  document.getElementById('gh-branch').value=GH.branch;
+  if(GH.token)document.getElementById('gh-token').value=GH.token;
+  updateBanner();renderClientsList();
 });
 </script>
 </body>
