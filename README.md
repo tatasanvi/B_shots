@@ -14,6 +14,7 @@ Then open http://localhost:8000
 ## Structure
 
     index.html            everything - markup, styles, script
+    admin.html            Studio Manager - client and photo management interface
     assets/logo.png       OB Shots mark, recoloured to bone, transparent
     assets/favicon.png
     assets/photos/*.webp  24 portfolio images, 1000px wide
@@ -29,6 +30,8 @@ GitHub Pages, deploy from branch `main`, folder `/ (root)`.
 
 - Full bilingual FR/EN toggle with instant language switching and localStorage persistence
 - Direct WhatsApp link (+229 52 94 56 44) and location (Cotonou, Bénin) in the contact section
+- High-end Obsidian Black, Pure White and Champagne Gold color palette
+- Studio Manager (admin.html) for effortless photo, client and campaign management
 
 ## Open items
 
