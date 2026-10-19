@@ -25,10 +25,13 @@ bottom of index.html. Categories: fashion, beauty, editorial, events, product, p
 
 GitHub Pages, deploy from branch `main`, folder `/ (root)`.
 
+## Completed
+
+- Full bilingual FR/EN toggle with instant language switching and localStorage persistence
+- Direct WhatsApp link (+229 52 94 56 44) and location (Cotonou, Bénin) in the contact section
+
 ## Open items
 
-- FR/EN toggle renders but does not switch yet
 - Frame titles are placeholders pending real credits
 - Four campaigns (Dolait, Le Jus de Tam Tam, Sistywax, Gari Kivo) marked
   "Coming soon" until imagery arrives
-- WhatsApp number and city not yet added to the contact section

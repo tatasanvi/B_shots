@@ -114,8 +114,13 @@ header .brand span{
   font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--dim);
 }
 .nav-right{display:flex;align-items:center;gap:26px}
-.lang{display:flex;gap:7px;font-size:10px;letter-spacing:.16em;color:var(--dim)}
-.lang b{color:var(--bone);font-weight:500}
+.lang{display:flex;align-items:center;gap:6px;font-size:10px;letter-spacing:.16em;color:var(--dim)}
+.lang-btn{
+  color:var(--dim);font-size:10px;letter-spacing:.16em;padding:2px 4px;
+  cursor:pointer;transition:color .3s ease;
+}
+.lang-btn:hover{color:var(--bone)}
+.lang-btn.active{color:var(--bone);font-weight:600}
 .menu-btn{
   display:flex;align-items:center;gap:11px;
   font-size:10px;letter-spacing:.28em;text-transform:uppercase;
@@ -383,7 +388,7 @@ body.done .scroll-hint{opacity:1}
 }
 .contact-lead a:hover{border-color:var(--brass)}
 .contact-rows{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:34px;
+  display:grid;grid-template-columns:repeat(5,1fr);gap:28px;
   margin-top:64px;padding-top:30px;border-top:1px solid var(--line);
 }
 .contact-rows h5{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--dim);margin-bottom:12px}
@@ -444,9 +449,14 @@ footer{
 #lb .next{right:16px}
 
 /* ============ RESPONSIVE ============ */
+@media(max-width:1160px){
+  .contact-rows{grid-template-columns:repeat(3,1fr)}
+}
 @media(max-width:1020px){
   .stmt-grid,.studio-grid,#print .print-grid{grid-template-columns:1fr}
   .svc{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:760px){
   .contact-rows{grid-template-columns:1fr 1fr}
 }
 @media(max-width:680px){
@@ -507,19 +517,23 @@ document.documentElement.classList.add('js-anim');
     <span>Original&nbsp;Brave</span>
   </a>
   <div class="nav-right">
-    <div class="lang"><b>EN</b><span>/</span><span>FR</span></div>
+    <div class="lang" id="lang-switch" role="group" aria-label="Language selector">
+      <button type="button" class="lang-btn active" data-lang="en" aria-label="Switch to English">EN</button>
+      <span aria-hidden="true">/</span>
+      <button type="button" class="lang-btn" data-lang="fr" aria-label="Passer en français">FR</button>
+    </div>
     <button class="menu-btn" id="mb"><span id="mbt">Menu</span><span class="bars"><i></i><i></i></span></button>
   </div>
 </header>
 
 <nav id="overlay">
   <ol>
-    <li><a href="#work"><em>01</em>Work</a></li>
-    <li><a href="#clients"><em>02</em>Clients</a></li>
-    <li><a href="#print"><em>03</em>In Print</a></li>
-    <li><a href="#studio"><em>04</em>Studio</a></li>
-    <li><a href="#services"><em>05</em>Services</a></li>
-    <li><a href="#contact"><em>06</em>Contact</a></li>
+    <li><a href="#work"><em>01</em><span data-i18n="nav_work">Work</span></a></li>
+    <li><a href="#clients"><em>02</em><span data-i18n="nav_clients">Clients</span></a></li>
+    <li><a href="#print"><em>03</em><span data-i18n="nav_print">In Print</span></a></li>
+    <li><a href="#studio"><em>04</em><span data-i18n="nav_studio">Studio</span></a></li>
+    <li><a href="#services"><em>05</em><span data-i18n="nav_services">Services</span></a></li>
+    <li><a href="#contact"><em>06</em><span data-i18n="nav_contact">Contact</span></a></li>
   </ol>
 </nav>
 
@@ -527,26 +541,26 @@ document.documentElement.classList.add('js-anim');
 
 <section id="hero">
   <div class="hero-inner">
-    <div class="pill">Portrait &amp; Fashion Photography</div>
+    <div class="pill" data-i18n-html="hero_pill">Portrait &amp; Fashion Photography</div>
     <h1>
       <span class="w">Original</span><br>
       <span class="w brass">Brave</span>
     </h1>
-    <p class="desc">Portrait, fashion, event and product photography by
+    <p class="desc" data-i18n="hero_desc">Portrait, fashion, event and product photography by
     Précieux Tchibozo. Lit, styled and directed — studio and location.</p>
-    <a class="cta" href="#contact">Book a shoot</a>
+    <a class="cta" href="#contact" data-i18n="hero_cta">Book a shoot</a>
   </div>
   <div class="marquee"><div class="track" id="track"></div></div>
-  <div class="scroll-hint"><span class="rule"></span>Scroll</div>
+  <div class="scroll-hint"><span class="rule"></span><span data-i18n="hero_scroll">Scroll</span></div>
 </section>
 
 <section id="statement">
   <div class="wrap">
     <div class="stmt-grid">
-      <p class="lead rv">I photograph people and products as if they <b>already belonged on a cover.</b></p>
+      <p class="lead rv" data-i18n-html="stmt_lead">I photograph people and products as if they <b>already belonged on a cover.</b></p>
       <div class="stmt-body rv">
-        <p>Original Brave Shots is a portrait and fashion studio working across studio and location. Every frame is lit, styled and directed — not caught. The work runs from editorial portraiture and campaign imagery to event coverage and product photography for brands.</p>
-        <p>Art direction, shooting and retouching are handled in-house, which means the image you approve is the image that ships.</p>
+        <p data-i18n="stmt_p1">Original Brave Shots is a portrait and fashion studio working across studio and location. Every frame is lit, styled and directed — not caught. The work runs from editorial portraiture and campaign imagery to event coverage and product photography for brands.</p>
+        <p data-i18n="stmt_p2">Art direction, shooting and retouching are handled in-house, which means the image you approve is the image that ships.</p>
       </div>
     </div>
   </div>
@@ -554,7 +568,7 @@ document.documentElement.classList.add('js-anim');
 
 <section id="work">
   <div class="wrap">
-    <div class="sec-head rv"><span class="num">01</span><h2>My Work</h2></div>
+    <div class="sec-head rv"><span class="num">01</span><h2 data-i18n="sec_work">My Work</h2></div>
     <div id="sphere"><div id="sphere-inner"></div></div>
     <div class="sphere-cap" id="spherecap"></div>
   </div>
@@ -562,19 +576,19 @@ document.documentElement.classList.add('js-anim');
 
 <section id="clients">
   <div class="wrap">
-    <div class="sec-head rv"><span class="num">02</span><h2>Clients &amp; Campaigns</h2></div>
+    <div class="sec-head rv"><span class="num">02</span><h2 data-i18n-html="sec_clients">Clients &amp; Campaigns</h2></div>
     <div id="clientlist"></div>
   </div>
 </section>
 
 <section id="print">
   <div class="wrap">
-    <div class="sec-head rv"><span class="num">03</span><h2>In Print</h2></div>
+    <div class="sec-head rv"><span class="num">03</span><h2 data-i18n="sec_print">In Print</h2></div>
     <div class="print-grid">
       <div class="clip"><img id="printimg" alt="Editorial spread"></div>
       <div class="note rv">
-        <b>Shot for the page, not the feed.</b>
-        Work produced for print carries different demands — resolution, colour accuracy, and compositions that survive a fold. Editorial spreads and campaign imagery are delivered print-ready.
+        <b data-i18n="print_title">Shot for the page, not the feed.</b>
+        <span data-i18n="print_desc">Work produced for print carries different demands — resolution, colour accuracy, and compositions that survive a fold. Editorial spreads and campaign imagery are delivered print-ready.</span>
       </div>
     </div>
   </div>
@@ -582,31 +596,31 @@ document.documentElement.classList.add('js-anim');
 
 <section id="studio">
   <div class="wrap">
-    <div class="sec-head rv"><span class="num">04</span><h2>The Studio</h2></div>
+    <div class="sec-head rv"><span class="num">04</span><h2 data-i18n="sec_studio">The Studio</h2></div>
     <div class="studio-grid">
       <div class="portrait-frame clip">
         <img id="portrait" alt="Portrait">
-        <div class="cap">Précieux Tchibozo — Founder</div>
+        <div class="cap" data-i18n="studio_cap">Précieux Tchibozo — Founder</div>
       </div>
       <div class="rv">
-        <h3>Self-taught, then sharpened in the field.</h3>
-        <p class="bio">Précieux Tchibozo works as a portrait and fashion photographer, covering events, studio and location sessions, and product photography. His training came first from teaching himself, then from workshops, practical courses and a long run of work on real productions.</p>
-        <p class="bio">Art direction, retouching and graphic design sit alongside the camera work — a single pair of hands from the brief through to the delivered file.</p>
+        <h3 data-i18n="studio_title">Self-taught, then sharpened in the field.</h3>
+        <p class="bio" data-i18n="studio_bio1">Précieux Tchibozo works as a portrait and fashion photographer, covering events, studio and location sessions, and product photography. His training came first from teaching himself, then from workshops, practical courses and a long run of work on real productions.</p>
+        <p class="bio" data-i18n="studio_bio2">Art direction, retouching and graphic design sit alongside the camera work — a single pair of hands from the brief through to the delivered file.</p>
         <div class="cols">
           <div>
-            <h4>Disciplines</h4>
+            <h4 data-i18n="studio_disciplines">Disciplines</h4>
             <ul>
-              <li>Portrait photography</li>
-              <li>Fashion photography</li>
-              <li>Event photography</li>
-              <li>Product photography</li>
-              <li>Art direction</li>
-              <li>Retouching</li>
-              <li>Graphic design</li>
+              <li data-i18n="disc_portrait">Portrait photography</li>
+              <li data-i18n="disc_fashion">Fashion photography</li>
+              <li data-i18n="disc_event">Event photography</li>
+              <li data-i18n="disc_product">Product photography</li>
+              <li data-i18n="disc_artdir">Art direction</li>
+              <li data-i18n="disc_retouch">Retouching</li>
+              <li data-i18n="disc_design">Graphic design</li>
             </ul>
           </div>
           <div>
-            <h4>Tools</h4>
+            <h4 data-i18n="studio_tools">Tools</h4>
             <ul>
               <li>Adobe Lightroom</li>
               <li>Adobe Photoshop</li>
@@ -622,24 +636,32 @@ document.documentElement.classList.add('js-anim');
 
 <section id="services">
   <div class="wrap">
-    <div class="sec-head rv"><span class="num">05</span><h2>How a Shoot Runs</h2></div>
+    <div class="sec-head rv"><span class="num">05</span><h2 data-i18n="sec_services">How a Shoot Runs</h2></div>
     <div class="svc rv">
-      <div><div class="n">01</div><h4>The brief</h4><p>You send the idea, the deadline and any references. I come back with what's possible and what it costs.</p></div>
-      <div><div class="n">02</div><h4>Direction</h4><p>Concept, styling, location and lighting are planned before anyone stands in front of a camera.</p></div>
-      <div><div class="n">03</div><h4>The shoot</h4><p>Studio or location. You see frames as we go, so nothing is a surprise at delivery.</p></div>
-      <div><div class="n">04</div><h4>Delivery</h4><p>A selected edit, retouched and colour-graded, delivered in web and print resolution.</p></div>
+      <div><div class="n">01</div><h4 data-i18n="svc1_title">The brief</h4><p data-i18n="svc1_desc">You send the idea, the deadline and any references. I come back with what's possible and what it costs.</p></div>
+      <div><div class="n">02</div><h4 data-i18n="svc2_title">Direction</h4><p data-i18n="svc2_desc">Concept, styling, location and lighting are planned before anyone stands in front of a camera.</p></div>
+      <div><div class="n">03</div><h4 data-i18n="svc3_title">The shoot</h4><p data-i18n="svc3_desc">Studio or location. You see frames as we go, so nothing is a surprise at delivery.</p></div>
+      <div><div class="n">04</div><h4 data-i18n="svc4_title">Delivery</h4><p data-i18n="svc4_desc">A selected edit, retouched and colour-graded, delivered in web and print resolution.</p></div>
     </div>
   </div>
 </section>
 
 <section id="contact">
   <div class="wrap">
-    <div class="sec-head rv"><span class="num">06</span><h2>Contact</h2></div>
-    <p class="contact-lead rv">Have something to shoot?<br><a href="mailto:originalbraveshots@gmail.com">Write to the studio.</a></p>
+    <div class="sec-head rv"><span class="num">06</span><h2 data-i18n="sec_contact">Contact</h2></div>
+    <p class="contact-lead rv" data-i18n-html="contact_lead">Have something to shoot?<br><a href="mailto:originalbraveshots@gmail.com">Write to the studio.</a></p>
     <div class="contact-rows rv">
       <div>
         <h5>Email</h5>
         <a href="mailto:originalbraveshots@gmail.com">originalbraveshots@gmail.com</a>
+      </div>
+      <div>
+        <h5>WhatsApp</h5>
+        <a href="https://wa.me/22952945644" target="_blank" rel="noopener">+229 52 94 56 44</a>
+      </div>
+      <div>
+        <h5 data-i18n="contact_location">Location</h5>
+        <p data-i18n="contact_loc_val">Cotonou, Benin</p>
       </div>
       <div>
         <h5>Instagram</h5>
@@ -656,8 +678,8 @@ document.documentElement.classList.add('js-anim');
 </main>
 
 <footer>
-  <span>Original Brave Shots © 2026</span>
-  <span>Précieux Tchibozo — Portrait &amp; Fashion</span>
+  <span data-i18n="footer_copy">Original Brave Shots © 2026</span>
+  <span data-i18n-html="footer_role">Précieux Tchibozo — Portrait &amp; Fashion</span>
 </footer>
 
 <div id="lb">
@@ -895,6 +917,141 @@ document.documentElement.classList.add('js-anim');
 (function(){
   var RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* ---------- i18n dictionary ---------- */
+  var I18N = {
+    en: {
+      nav_work: "Work",
+      nav_clients: "Clients",
+      nav_print: "In Print",
+      nav_studio: "Studio",
+      nav_services: "Services",
+      nav_contact: "Contact",
+      menu_open: "Menu",
+      menu_close: "Close",
+      hero_pill: "Portrait &amp; Fashion Photography",
+      hero_desc: "Portrait, fashion, event and product photography by Précieux Tchibozo. Lit, styled and directed — studio and location.",
+      hero_cta: "Book a shoot",
+      hero_scroll: "Scroll",
+      stmt_lead: "I photograph people and products as if they <b>already belonged on a cover.</b>",
+      stmt_p1: "Original Brave Shots is a portrait and fashion studio working across studio and location. Every frame is lit, styled and directed — not caught. The work runs from editorial portraiture and campaign imagery to event coverage and product photography for brands.",
+      stmt_p2: "Art direction, shooting and retouching are handled in-house, which means the image you approve is the image that ships.",
+      sec_work: "My Work",
+      drag_explore: "Drag to explore",
+      sec_clients: "Clients &amp; Campaigns",
+      coming_soon: "Coming soon",
+      cat_campaign: "Campaign",
+      cat_product: "Product",
+      sec_print: "In Print",
+      print_title: "Shot for the page, not the feed.",
+      print_desc: "Work produced for print carries different demands — resolution, colour accuracy, and compositions that survive a fold. Editorial spreads and campaign imagery are delivered print-ready.",
+      sec_studio: "The Studio",
+      studio_cap: "Précieux Tchibozo — Founder",
+      studio_title: "Self-taught, then sharpened in the field.",
+      studio_bio1: "Précieux Tchibozo works as a portrait and fashion photographer, covering events, studio and location sessions, and product photography. His training came first from teaching himself, then from workshops, practical courses and a long run of work on real productions.",
+      studio_bio2: "Art direction, retouching and graphic design sit alongside the camera work — a single pair of hands from the brief through to the delivered file.",
+      studio_disciplines: "Disciplines",
+      disc_portrait: "Portrait photography",
+      disc_fashion: "Fashion photography",
+      disc_event: "Event photography",
+      disc_product: "Product photography",
+      disc_artdir: "Art direction",
+      disc_retouch: "Retouching",
+      disc_design: "Graphic design",
+      studio_tools: "Tools",
+      sec_services: "How a Shoot Runs",
+      svc1_title: "The brief",
+      svc1_desc: "You send the idea, the deadline and any references. I come back with what's possible and what it costs.",
+      svc2_title: "Direction",
+      svc2_desc: "Concept, styling, location and lighting are planned before anyone stands in front of a camera.",
+      svc3_title: "The shoot",
+      svc3_desc: "Studio or location. You see frames as we go, so nothing is a surprise at delivery.",
+      svc4_title: "Delivery",
+      svc4_desc: "A selected edit, retouched and colour-graded, delivered in web and print resolution.",
+      sec_contact: "Contact",
+      contact_lead: 'Have something to shoot?<br><a href="mailto:originalbraveshots@gmail.com">Write to the studio.</a>',
+      contact_location: "Location",
+      contact_loc_val: "Cotonou, Benin",
+      footer_copy: "Original Brave Shots © 2026",
+      footer_role: "Précieux Tchibozo — Portrait &amp; Fashion",
+      lb_prev: "Previous",
+      lb_next: "Next",
+      lb_close: "Close"
+    },
+    fr: {
+      nav_work: "Portfolio",
+      nav_clients: "Clients",
+      nav_print: "En Presse",
+      nav_studio: "Le Studio",
+      nav_services: "Prestations",
+      nav_contact: "Contact",
+      menu_open: "Menu",
+      menu_close: "Fermer",
+      hero_pill: "Photographie Portrait &amp; Mode",
+      hero_desc: "Photographie de portrait, mode, événementiel et produit par Précieux Tchibozo. Éclairé, stylisé et mis en scène — en studio et sur site.",
+      hero_cta: "Réserver un shooting",
+      hero_scroll: "Défiler",
+      stmt_lead: "Je photographie les personnes et les créations comme si elles <b>figuraient déjà en couverture.</b>",
+      stmt_p1: "Original Brave Shots est un studio de photographie portrait et mode intervenant en studio et en extérieur. Chaque prise est éclairée, stylisée et dirigée — jamais laissée au hasard. Le travail s'étend du portrait éditorial aux campagnes visuelles, en passant par la couverture événementielle et la photographie de produits pour les marques.",
+      stmt_p2: "Direction artistique, prise de vue et retouche sont maîtrisées en interne : l'image que vous validez est exactement celle qui est livrée.",
+      sec_work: "Mes Réalisations",
+      drag_explore: "Faites glisser pour explorer",
+      sec_clients: "Clients &amp; Campagnes",
+      coming_soon: "Bientôt disponible",
+      cat_campaign: "Campagne",
+      cat_product: "Produit",
+      sec_print: "En Presse",
+      print_title: "Conçu pour le papier, pas pour un fil d'actualité.",
+      print_desc: "Le travail destiné à l'impression répond à des exigences uniques : très haute résolution, fidélité colorimétrique et compositions pensées pour traverser le pli central. Séries éditoriales et campagnes sont livrées prêtes pour l'impression.",
+      sec_studio: "Le Studio",
+      studio_cap: "Précieux Tchibozo — Fondateur",
+      studio_title: "Autodidacte, puis forgé sur le terrain.",
+      studio_bio1: "Précieux Tchibozo exerce comme photographe portrait et mode, intervenant sur des événements, en studio, en extérieur, et pour la photographie de produit. Sa pratique s'est forgée en autodidacte, puis consolidée au fil d'ateliers, de formations pratiques et d'expériences de terrain exigeantes.",
+      studio_bio2: "Direction artistique, retouche et design graphique accompagnent la prise de vue — un interlocuteur unique du brief créatif au fichier final.",
+      studio_disciplines: "Disciplines",
+      disc_portrait: "Photographie de portrait",
+      disc_fashion: "Photographie de mode",
+      disc_event: "Photographie événementielle",
+      disc_product: "Photographie de produits",
+      disc_artdir: "Direction artistique",
+      disc_retouch: "Retouche numérique",
+      disc_design: "Design graphique",
+      studio_tools: "Outils",
+      sec_services: "Déroulement d'un Shooting",
+      svc1_title: "Le brief",
+      svc1_desc: "Vous partagez votre concept, votre calendrier et vos inspirations. Je vous réponds avec les options réalisables et un chiffrage clair.",
+      svc2_title: "Direction",
+      svc2_desc: "Concept, stylisme, repérages et éclairage sont cadrés avec précision avant la première prise de vue.",
+      svc3_title: "La prise de vue",
+      svc3_desc: "En studio ou sur site. Vous visualisez les clichés en direct au fil du shooting, sans surprise à la livraison.",
+      svc4_title: "Livraison",
+      svc4_desc: "Une sélection rigoureuse, retouchée et étalonnée, livrée en résolutions optimisées pour le web et l'impression.",
+      sec_contact: "Contact",
+      contact_lead: 'Un projet ou un shooting à concrétiser ?<br><a href="mailto:originalbraveshots@gmail.com">Écrivez au studio.</a>',
+      contact_location: "Localisation",
+      contact_loc_val: "Cotonou, Bénin",
+      footer_copy: "Original Brave Shots © 2026",
+      footer_role: "Précieux Tchibozo — Portrait &amp; Mode",
+      lb_prev: "Précédent",
+      lb_next: "Suivant",
+      lb_close: "Fermer"
+    }
+  };
+
+  var currentLang = localStorage.getItem('obs_lang') || (navigator.language && navigator.language.startsWith('fr') ? 'fr' : 'en');
+  if(currentLang !== 'fr' && currentLang !== 'en') currentLang = 'en';
+
+  function tagOf(tag){
+    if(currentLang === 'fr'){
+      if(tag === 'Studio') return 'Studio';
+      if(tag === 'Location') return 'Extérieur';
+      if(tag === 'Event') return 'Événement';
+      if(tag === 'Product') return 'Produit';
+      if(tag === 'Editorial') return 'Éditorial';
+      if(tag === 'Print') return 'Presse';
+    }
+    return tag;
+  }
+
   /* ---------- overture ---------- */
   function open(){
     document.body.classList.add('opened');
@@ -951,12 +1108,12 @@ document.documentElement.classList.add('js-anim');
   mb.addEventListener('click', function(){
     var open = document.body.classList.toggle('nav-open');
     document.body.classList.toggle('locked', open);
-    mbt.textContent = open ? 'Close' : 'Menu';
+    mbt.textContent = open ? I18N[currentLang].menu_close : I18N[currentLang].menu_open;
   });
   document.querySelectorAll('#overlay a').forEach(function(a){
     a.addEventListener('click', function(){
       document.body.classList.remove('nav-open','locked');
-      mbt.textContent='Menu';
+      mbt.textContent = I18N[currentLang].menu_open;
     });
   });
 
@@ -1004,8 +1161,8 @@ document.documentElement.classList.add('js-anim');
   function lbOpen(){ var el = document.getElementById('lb'); return !!el && el.classList.contains('on'); }
 
   function setCap(p){
-    sphereCap.innerHTML = p ? '<b>'+p.label+'</b><s>'+p.tag+'</s>'
-                            : '<b>Drag to explore</b>';
+    sphereCap.innerHTML = p ? '<b>'+p.label+'</b><s>'+tagOf(p.tag)+'</s>'
+                            : '<b>'+I18N[currentLang].drag_explore+'</b>';
   }
 
   function makeOrb(p){
@@ -1013,7 +1170,7 @@ document.documentElement.classList.add('js-anim');
     d.className = 'orb';
     d.tabIndex = 0;
     d.setAttribute('role','button');
-    d.setAttribute('aria-label', p.label + ' — ' + p.tag);
+    d.setAttribute('aria-label', p.label + ' — ' + tagOf(p.tag));
     var im = new Image();
     /* sizes before srcset before src, so the 500w -sm variant is chosen */
     im.sizes = '84px';
@@ -1162,14 +1319,22 @@ document.documentElement.classList.add('js-anim');
     {n:'Gari Kivo', t:'Campaign', y:'—', live:false},
     {n:'Sco Chips', t:'Product', y:'—', live:true}
   ];
-  var cl = document.getElementById('clientlist');
-  CLIENTS.forEach(function(c){
-    var d = document.createElement('div');
-    d.className = 'client rv ' + (c.live ? 'live' : 'soon');
-    d.innerHTML = '<div class="yr">'+c.y+'</div><h3>'+c.n+'</h3>'+
-      '<div class="tag">'+(c.live ? c.t : 'Coming soon')+'</div>';
-    cl.appendChild(d);
-  });
+  function renderClients(){
+    var cl = document.getElementById('clientlist');
+    if(!cl) return;
+    cl.innerHTML = '';
+    CLIENTS.forEach(function(c){
+      var d = document.createElement('div');
+      d.className = 'client rv ' + (c.live ? 'live' : 'soon');
+      var tagText = c.live 
+        ? (c.t === 'Campaign' ? I18N[currentLang].cat_campaign : (c.t === 'Product' ? I18N[currentLang].cat_product : c.t))
+        : I18N[currentLang].coming_soon;
+      d.innerHTML = '<div class="yr">'+c.y+'</div><h3>'+c.n+'</h3>'+
+        '<div class="tag">'+tagText+'</div>';
+      cl.appendChild(d);
+    });
+    observe();
+  }
 
   /* ---------- fixed images ---------- */
   var pr = byId['p02'], po = byId['p24'];
@@ -1199,7 +1364,7 @@ document.documentElement.classList.add('js-anim');
     lbi.removeAttribute('srcset');
     lbi.src = p.src;
     lbm.textContent = p.label;
-    lbt.textContent = p.tag;
+    lbt.textContent = tagOf(p.tag);
     requestAnimationFrame(function(){ setTimeout(function(){ lb.classList.add('ready'); }, 20); });
   }
   function closeLB(){ lb.classList.remove('on','ready'); document.body.classList.remove('locked'); }
@@ -1229,7 +1394,59 @@ document.documentElement.classList.add('js-anim');
     if(e.key === 'ArrowRight') step(1);
   });
 
+  /* ---------- language switch ---------- */
+  function setLanguage(lang){
+    currentLang = lang;
+    try { localStorage.setItem('obs_lang', lang); } catch(_){}
+    document.documentElement.lang = lang;
+
+    document.querySelectorAll('.lang-btn').forEach(function(btn){
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var key = el.getAttribute('data-i18n');
+      if(I18N[lang] && I18N[lang][key] !== undefined){
+        el.textContent = I18N[lang][key];
+      }
+    });
+
+    document.querySelectorAll('[data-i18n-html]').forEach(function(el){
+      var key = el.getAttribute('data-i18n-html');
+      if(I18N[lang] && I18N[lang][key] !== undefined){
+        el.innerHTML = I18N[lang][key];
+      }
+    });
+
+    var open = document.body.classList.contains('nav-open');
+    mbt.textContent = open ? I18N[lang].menu_close : I18N[lang].menu_open;
+
+    var lbp = document.getElementById('lbp'), lbn = document.getElementById('lbn'), lbx = document.getElementById('lbx');
+    if(lbp) lbp.setAttribute('aria-label', I18N[lang].lb_prev);
+    if(lbn) lbn.setAttribute('aria-label', I18N[lang].lb_next);
+    if(lbx) lbx.setAttribute('aria-label', I18N[lang].lb_close);
+
+    renderClients();
+    setCap(null);
+
+    if(lbOpen()){
+      paint();
+    }
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      var lang = this.getAttribute('data-lang');
+      if(lang && lang !== currentLang){
+        setLanguage(lang);
+      }
+    });
+  });
+
   render();
+  renderClients();
+  setLanguage(currentLang);
   observe();
   requestAnimationFrame(tick);
 })();
