@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="utf-8">
@@ -407,7 +407,7 @@ async function uploadPhoto(e){
     var w=imgEl.naturalWidth||720,h=imgEl.naturalHeight||1080;
 
     var newEntry=',\n{\n"id": "'+pid+'",\n"cat": "'+cat+'",\n"label": "'+title.replace(/\\/g,'\\\\').replace(/"/g,'\\"')+'",\n"tag": "'+tag+'",\n"src": "assets/photos/'+pid+'.'+ext+'",\n"w": '+w+',\n"h": '+h+'\n}';
-    var marker='];</script>';
+    var marker='];<' + '/script>';
     if(html.indexOf(marker)===-1)throw new Error('Marqueur PHOTOS introuvable dans index.html.');
     html=html.replace(marker,newEntry+'\n'+marker);
 
@@ -435,7 +435,7 @@ async function loadGallery(){
   if(!GH.token){container.innerHTML='<div class="empty"><span>&#128274;</span>Configurez un token GitHub dans Parametres pour voir la galerie.</div>';return;}
   try{
     var indexData=await getFileContent('index.html');
-    var match=indexData.content.match(/const PHOTOS = \[([\s\S]*?)\];<\/script>/);
+    var match=indexData.content.match(/const PHOTOS\s*=\s*\[([\s\S]*?)\];/);
     if(!match)throw new Error('Tableau PHOTOS introuvable.');
     var photos=JSON.parse('['+match[1]+']');
     renderGallery(photos);
