@@ -9,7 +9,7 @@
 <meta property="og:description" content="Portrait and fashion photography by Precieux Tchibozo.">
 <meta property="og:image" content="assets/photos/p10.webp">
 <meta property="og:type" content="website">
-<title>Original Brave Shots — Précieux Tchibozo</title>
+<title>Original Brave Shots - Précieux Tchibozo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- Preload only what the hero paints: Bodoni Moda 400 (wordmark) and Archivo 400
@@ -85,7 +85,7 @@ body.done #overture{display:none}
    so a JS failure leaves a black screen. These animations run to the same end state
    as the .opened rules above, keeping the original stagger.
    The selector is the guard: the moment JS adds .opened these rules stop matching,
-   so the animation cannot fire alongside the JS path — there is no double-animation
+   so the animation cannot fire alongside the JS path - there is no double-animation
    to suppress. If JS never arrives, the curtain lifts on its own at ~4s. */
 @keyframes overture-leaf-up{to{transform:translateY(-101%)}}
 @keyframes overture-leaf-down{to{transform:translateY(101%)}}
@@ -194,7 +194,7 @@ body.nav-open #overlay a{transform:translateY(0)}
 
 /* Hidden state is opt-in, gated on html.js-anim exactly like .rv/.clip. If JS never
    runs, the hero copy is visible rather than stranded at opacity:0. The translateY
-   values ride the same gate so nothing shifts when JS is on. .cta takes opacity only —
+   values ride the same gate so nothing shifts when JS is on. .cta takes opacity only -
    it has no entrance offset, and a translate here would fight its hover scale. */
 .js-anim .pill,
 .js-anim .desc,
@@ -209,7 +209,7 @@ body.done #hero h1 .w:nth-child(1){animation:fadeUp .9s var(--ease) .22s forward
 body.done #hero h1 .w:nth-child(3){animation:fadeUp .9s var(--ease) .34s forwards}
 body.done .desc{animation:fadeUp .8s var(--ease) .55s forwards}
 /* The CTA fades without a transform. fadeUp ends on transform:none with fill:forwards,
-   and a finished forwards animation outranks the :hover/:active rules below — which
+   and a finished forwards animation outranks the :hover/:active rules below - which
    silently killed the button's scale. */
 body.done .cta{animation:fadeIn .8s var(--ease) .68s forwards}
 @keyframes fadeUp{to{opacity:1;transform:none}}
@@ -253,7 +253,7 @@ body.done .scroll-hint{opacity:1}
 
 /* ============ REVEAL ============ */
 /* Base state is VISIBLE. If JS never runs, or fails before it can flag itself,
-   nothing is ever hidden — the photographs are not gated behind a script. */
+   nothing is ever hidden - the photographs are not gated behind a script. */
 .rv{opacity:1;transform:none;transition:opacity .9s ease,transform .9s var(--ease)}
 .clip{clip-path:inset(0 0 0 0);transition:clip-path 1.15s var(--ease)}
 /* Hiding is opt-in, gated on html.js-anim (added by an inline script in <head>). */
@@ -296,7 +296,7 @@ body.done .scroll-hint{opacity:1}
   cursor:pointer;-webkit-tap-highlight-color:transparent;
   /* The wrapper is the element that carries the transform and gets promoted to its own
      compositing layer during a drag. Chrome can drop a child's border-radius clip on a
-     promoted layer, which rendered orbs as squares mid-drag — so the clip lives here,
+     promoted layer, which rendered orbs as squares mid-drag - so the clip lives here,
      on the transformed element itself. The shadow moves here too: overflow:hidden would
      clip a shadow painted by the child, but never the clipping element's own. */
   border-radius:50%;overflow:hidden;
@@ -418,7 +418,7 @@ footer{
   transition:opacity .42s var(--ease),transform .42s var(--ease);
 }
 #lb.ready .lb-card{opacity:1;transform:none}
-/* The full frame, square-cornered — the circle belongs to the orbs only. */
+/* The full frame, square-cornered - the circle belongs to the orbs only. */
 #lb img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover}
 .lb-text{padding:26px 28px 30px}
 .lb-text h3{
@@ -547,7 +547,7 @@ document.documentElement.classList.add('js-anim');
       <span class="w brass">Brave</span>
     </h1>
     <p class="desc" data-i18n="hero_desc">Portrait, fashion, event and product photography by
-    Précieux Tchibozo. Lit, styled and directed — studio and location.</p>
+    Précieux Tchibozo. Lit, styled and directed - studio and location.</p>
     <a class="cta" href="#contact" data-i18n="hero_cta">Book a shoot</a>
   </div>
   <div class="marquee"><div class="track" id="track"></div></div>
@@ -559,7 +559,7 @@ document.documentElement.classList.add('js-anim');
     <div class="stmt-grid">
       <p class="lead rv" data-i18n-html="stmt_lead">I photograph people and products as if they <b>already belonged on a cover.</b></p>
       <div class="stmt-body rv">
-        <p data-i18n="stmt_p1">Original Brave Shots is a portrait and fashion studio working across studio and location. Every frame is lit, styled and directed — not caught. The work runs from editorial portraiture and campaign imagery to event coverage and product photography for brands.</p>
+        <p data-i18n="stmt_p1">Original Brave Shots is a portrait and fashion studio working across studio and location. Every frame is lit, styled and directed - not caught. The work runs from editorial portraiture and campaign imagery to event coverage and product photography for brands.</p>
         <p data-i18n="stmt_p2">Art direction, shooting and retouching are handled in-house, which means the image you approve is the image that ships.</p>
       </div>
     </div>
@@ -588,7 +588,7 @@ document.documentElement.classList.add('js-anim');
       <div class="clip"><img id="printimg" alt="Editorial spread"></div>
       <div class="note rv">
         <b data-i18n="print_title">Shot for the page, not the feed.</b>
-        <span data-i18n="print_desc">Work produced for print carries different demands — resolution, colour accuracy, and compositions that survive a fold. Editorial spreads and campaign imagery are delivered print-ready.</span>
+        <span data-i18n="print_desc">Work produced for print carries different demands - resolution, colour accuracy, and compositions that survive a fold. Editorial spreads and campaign imagery are delivered print-ready.</span>
       </div>
     </div>
   </div>
@@ -600,12 +600,12 @@ document.documentElement.classList.add('js-anim');
     <div class="studio-grid">
       <div class="portrait-frame clip">
         <img id="portrait" alt="Portrait">
-        <div class="cap" data-i18n="studio_cap">Précieux Tchibozo — Founder</div>
+        <div class="cap" data-i18n="studio_cap">Précieux Tchibozo - Founder</div>
       </div>
       <div class="rv">
         <h3 data-i18n="studio_title">Self-taught, then sharpened in the field.</h3>
         <p class="bio" data-i18n="studio_bio1">Précieux Tchibozo works as a portrait and fashion photographer, covering events, studio and location sessions, and product photography. His training came first from teaching himself, then from workshops, practical courses and a long run of work on real productions.</p>
-        <p class="bio" data-i18n="studio_bio2">Art direction, retouching and graphic design sit alongside the camera work — a single pair of hands from the brief through to the delivered file.</p>
+        <p class="bio" data-i18n="studio_bio2">Art direction, retouching and graphic design sit alongside the camera work - a single pair of hands from the brief through to the delivered file.</p>
         <div class="cols">
           <div>
             <h4 data-i18n="studio_disciplines">Disciplines</h4>
@@ -679,7 +679,7 @@ document.documentElement.classList.add('js-anim');
 
 <footer>
   <span data-i18n="footer_copy">Original Brave Shots © 2026</span>
-  <span data-i18n-html="footer_role">Précieux Tchibozo — Portrait &amp; Fashion</span>
+  <span data-i18n-html="footer_role">Précieux Tchibozo - Portrait &amp; Fashion</span>
 </footer>
 
 <div id="lb">
@@ -929,11 +929,11 @@ document.documentElement.classList.add('js-anim');
       menu_open: "Menu",
       menu_close: "Close",
       hero_pill: "Portrait &amp; Fashion Photography",
-      hero_desc: "Portrait, fashion, event and product photography by Précieux Tchibozo. Lit, styled and directed — studio and location.",
+      hero_desc: "Portrait, fashion, event and product photography by Précieux Tchibozo. Lit, styled and directed - studio and location.",
       hero_cta: "Book a shoot",
       hero_scroll: "Scroll",
       stmt_lead: "I photograph people and products as if they <b>already belonged on a cover.</b>",
-      stmt_p1: "Original Brave Shots is a portrait and fashion studio working across studio and location. Every frame is lit, styled and directed — not caught. The work runs from editorial portraiture and campaign imagery to event coverage and product photography for brands.",
+      stmt_p1: "Original Brave Shots is a portrait and fashion studio working across studio and location. Every frame is lit, styled and directed - not caught. The work runs from editorial portraiture and campaign imagery to event coverage and product photography for brands.",
       stmt_p2: "Art direction, shooting and retouching are handled in-house, which means the image you approve is the image that ships.",
       sec_work: "My Work",
       drag_explore: "Drag to explore",
@@ -943,12 +943,12 @@ document.documentElement.classList.add('js-anim');
       cat_product: "Product",
       sec_print: "In Print",
       print_title: "Shot for the page, not the feed.",
-      print_desc: "Work produced for print carries different demands — resolution, colour accuracy, and compositions that survive a fold. Editorial spreads and campaign imagery are delivered print-ready.",
+      print_desc: "Work produced for print carries different demands - resolution, colour accuracy, and compositions that survive a fold. Editorial spreads and campaign imagery are delivered print-ready.",
       sec_studio: "The Studio",
-      studio_cap: "Précieux Tchibozo — Founder",
+      studio_cap: "Précieux Tchibozo - Founder",
       studio_title: "Self-taught, then sharpened in the field.",
       studio_bio1: "Précieux Tchibozo works as a portrait and fashion photographer, covering events, studio and location sessions, and product photography. His training came first from teaching himself, then from workshops, practical courses and a long run of work on real productions.",
-      studio_bio2: "Art direction, retouching and graphic design sit alongside the camera work — a single pair of hands from the brief through to the delivered file.",
+      studio_bio2: "Art direction, retouching and graphic design sit alongside the camera work - a single pair of hands from the brief through to the delivered file.",
       studio_disciplines: "Disciplines",
       disc_portrait: "Portrait photography",
       disc_fashion: "Fashion photography",
@@ -972,7 +972,7 @@ document.documentElement.classList.add('js-anim');
       contact_location: "Location",
       contact_loc_val: "Cotonou, Benin",
       footer_copy: "Original Brave Shots © 2026",
-      footer_role: "Précieux Tchibozo — Portrait &amp; Fashion",
+      footer_role: "Précieux Tchibozo - Portrait &amp; Fashion",
       lb_prev: "Previous",
       lb_next: "Next",
       lb_close: "Close"
@@ -987,11 +987,11 @@ document.documentElement.classList.add('js-anim');
       menu_open: "Menu",
       menu_close: "Fermer",
       hero_pill: "Photographie Portrait &amp; Mode",
-      hero_desc: "Photographie de portrait, mode, événementiel et produit par Précieux Tchibozo. Éclairé, stylisé et mis en scène — en studio et sur site.",
+      hero_desc: "Photographie de portrait, mode, événementiel et produit par Précieux Tchibozo. Éclairé, stylisé et mis en scène - en studio et sur site.",
       hero_cta: "Réserver un shooting",
       hero_scroll: "Défiler",
       stmt_lead: "Je photographie les personnes et les créations comme si elles <b>figuraient déjà en couverture.</b>",
-      stmt_p1: "Original Brave Shots est un studio de photographie portrait et mode intervenant en studio et en extérieur. Chaque prise est éclairée, stylisée et dirigée — jamais laissée au hasard. Le travail s'étend du portrait éditorial aux campagnes visuelles, en passant par la couverture événementielle et la photographie de produits pour les marques.",
+      stmt_p1: "Original Brave Shots est un studio de photographie portrait et mode intervenant en studio et en extérieur. Chaque prise est éclairée, stylisée et dirigée - jamais laissée au hasard. Le travail s'étend du portrait éditorial aux campagnes visuelles, en passant par la couverture événementielle et la photographie de produits pour les marques.",
       stmt_p2: "Direction artistique, prise de vue et retouche sont maîtrisées en interne : l'image que vous validez est exactement celle qui est livrée.",
       sec_work: "Mes Réalisations",
       drag_explore: "Faites glisser pour explorer",
@@ -1003,10 +1003,10 @@ document.documentElement.classList.add('js-anim');
       print_title: "Conçu pour le papier, pas pour un fil d'actualité.",
       print_desc: "Le travail destiné à l'impression répond à des exigences uniques : très haute résolution, fidélité colorimétrique et compositions pensées pour traverser le pli central. Séries éditoriales et campagnes sont livrées prêtes pour l'impression.",
       sec_studio: "Le Studio",
-      studio_cap: "Précieux Tchibozo — Fondateur",
+      studio_cap: "Précieux Tchibozo - Fondateur",
       studio_title: "Autodidacte, puis forgé sur le terrain.",
       studio_bio1: "Précieux Tchibozo exerce comme photographe portrait et mode, intervenant sur des événements, en studio, en extérieur, et pour la photographie de produit. Sa pratique s'est forgée en autodidacte, puis consolidée au fil d'ateliers, de formations pratiques et d'expériences de terrain exigeantes.",
-      studio_bio2: "Direction artistique, retouche et design graphique accompagnent la prise de vue — un interlocuteur unique du brief créatif au fichier final.",
+      studio_bio2: "Direction artistique, retouche et design graphique accompagnent la prise de vue - un interlocuteur unique du brief créatif au fichier final.",
       studio_disciplines: "Disciplines",
       disc_portrait: "Photographie de portrait",
       disc_fashion: "Photographie de mode",
@@ -1030,7 +1030,7 @@ document.documentElement.classList.add('js-anim');
       contact_location: "Localisation",
       contact_loc_val: "Cotonou, Bénin",
       footer_copy: "Original Brave Shots © 2026",
-      footer_role: "Précieux Tchibozo — Portrait &amp; Mode",
+      footer_role: "Précieux Tchibozo - Portrait &amp; Mode",
       lb_prev: "Précédent",
       lb_next: "Suivant",
       lb_close: "Fermer"
@@ -1065,7 +1065,7 @@ document.documentElement.classList.add('js-anim');
   var byId = {}; PHOTOS.forEach(function(p){ byId[p.id]=p; });
 
   /* Responsive variants are derived from the existing src, so the PHOTOS array is
-     untouched. The large descriptor uses p.w — the files are 720-973px wide, not a
+     untouched. The large descriptor uses p.w - the files are 720-973px wide, not a
      uniform 1000px, and a wrong w descriptor makes the browser pick the wrong file. */
   function smallOf(src){ return src.replace(/\.webp$/, '-sm.webp'); }
   function srcsetOf(p){ return smallOf(p.src) + ' 500w, ' + p.src + ' ' + p.w + 'w'; }
@@ -1132,8 +1132,8 @@ document.documentElement.classList.add('js-anim');
          rather than waiting on the observer's first callback. */
       if(el.getBoundingClientRect().top < window.innerHeight) reveal(el);
     });
-    /* Hard safety net. Whatever the observer does or fails to do — suspended in a
-       background tab, never firing, unsupported — content is never left hidden. */
+    /* Hard safety net. Whatever the observer does or fails to do - suspended in a
+       background tab, never firing, unsupported - content is never left hidden. */
     setTimeout(function(){ pending().forEach(reveal); }, 2500);
   }
 
@@ -1170,7 +1170,7 @@ document.documentElement.classList.add('js-anim');
     d.className = 'orb';
     d.tabIndex = 0;
     d.setAttribute('role','button');
-    d.setAttribute('aria-label', p.label + ' — ' + tagOf(p.tag));
+    d.setAttribute('aria-label', p.label + ' - ' + tagOf(p.tag));
     var im = new Image();
     /* sizes before srcset before src, so the 500w -sm variant is chosen */
     im.sizes = '84px';
@@ -1192,7 +1192,7 @@ document.documentElement.classList.add('js-anim');
   function orbOf(el){ for(var i=0;i<orbs.length;i++) if(orbs[i].el === el) return orbs[i]; return null; }
 
   function render(){
-    /* Every photo except the archive set and the print spread — no category state. */
+    /* Every photo except the archive set and the print spread - no category state. */
     visible = PHOTOS.filter(function(p){ return p.cat !== 'archive' && p.cat !== 'print'; });
     sphereInner.innerHTML = '';
     orbs = visible.map(function(p){
@@ -1313,11 +1313,11 @@ document.documentElement.classList.add('js-anim');
 
   /* ---------- clients ---------- */
   var CLIENTS = [
-    {n:'Dolait', t:'Campaign', y:'—', live:false},
-    {n:'Le Jus de Tam Tam', t:'Campaign', y:'—', live:false},
-    {n:'Sistywax', t:'Campaign', y:'—', live:false},
-    {n:'Gari Kivo', t:'Campaign', y:'—', live:false},
-    {n:'Sco Chips', t:'Product', y:'—', live:true}
+    {n:'Dolait', t:'Campaign', y:'-', live:false},
+    {n:'Le Jus de Tam Tam', t:'Campaign', y:'-', live:false},
+    {n:'Sistywax', t:'Campaign', y:'-', live:false},
+    {n:'Gari Kivo', t:'Campaign', y:'-', live:false},
+    {n:'Sco Chips', t:'Product', y:'-', live:true}
   ];
   function renderClients(){
     var cl = document.getElementById('clientlist');
@@ -1360,7 +1360,7 @@ document.documentElement.classList.add('js-anim');
   function paint(){
     var p = visible[cur]; if(!p) return;
     lb.classList.remove('ready');
-    /* Full-screen view always gets the large file — never the 500px variant. */
+    /* Full-screen view always gets the large file - never the 500px variant. */
     lbi.removeAttribute('srcset');
     lbi.src = p.src;
     lbm.textContent = p.label;
@@ -1376,7 +1376,7 @@ document.documentElement.classList.add('js-anim');
   lb.addEventListener('click', function(e){ if(e.target === lb) closeLB(); });
 
   /* Swipe: horizontal travel over 50px steps through photos. Mostly-vertical
-     swipes are ignored so scrolling is unaffected. Listeners are passive —
+     swipes are ignored so scrolling is unaffected. Listeners are passive -
      they never call preventDefault, so they cannot block scrolling. */
   var tsX = 0, tsY = 0;
   lb.addEventListener('touchstart', function(e){
